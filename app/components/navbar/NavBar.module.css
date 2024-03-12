@@ -1,0 +1,27 @@
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  background-color: #333; /* Thay đổi màu nền navbar theo ý muốn của bạn */
+  color: white; /* Thay đổi màu chữ theo ý muốn của bạn */
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navitems {
+  display: flex;
+  gap: 20px; /* Khoảng cách giữa các lựa chọn */
+}
+
+.navitem {
+  cursor: pointer;
+}
+
+/* Hiệu ứng hover cho các lựa chọn */
+.nav-item:hover {
+  color: #00bcd4; /* Thay đổi màu chữ khi hover theo ý muốn của bạn */
+}
