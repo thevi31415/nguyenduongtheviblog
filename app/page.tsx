@@ -5,7 +5,9 @@ export default function Home() {
     <div>
       <h1>
         Xin chào đây là blog các nhân của mình ! Đang trong quá trình xây dựng
-        nhé <br> </br> 3/12/2024 !
+        nhé
+        <br />
+        3/12/2024 !
       </h1>
     </div>
   );
