@@ -3,7 +3,8 @@
   justify-content: space-between;
   align-items: center;
   padding: 20px;
-  background-color: #333; /* Thay đổi màu nền navbar theo ý muốn của bạn */
+  color: black;
+  background-color: white; /* Thay đổi màu nền navbar theo ý muốn của bạn */
   color: white; /* Thay đổi màu chữ theo ý muốn của bạn */
 }
 
@@ -19,6 +20,7 @@
 
 .navitem {
   cursor: pointer;
+  color: black;
 }
 
 /* Hiệu ứng hover cho các lựa chọn */

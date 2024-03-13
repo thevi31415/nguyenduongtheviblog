@@ -1,13 +1,21 @@
 import Image from "next/image";
+import { getSheetsData } from "./_lib/readSheet";
+interface Data {
+  name: string;
+  summary: string;
+}
 
-export default function Home() {
+export default async function Home() {
+  const data: Data[] = await getSheetsData();
+  const { name, summary } = data[0];
+  console.log("data: " + data);
+
   return (
     <div>
       <h1>
-        Xin chào đây là blog cá nhân của mình ! Đang trong quá trình xây dựng
-        nhé - Update update
+        {name}
         <br />
-        3/12/2024 !
+        {summary}
       </h1>
     </div>
   );
