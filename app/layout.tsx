@@ -19,34 +19,65 @@ export default function RootLayout({
 }>) {
   const header = (
     <header>
-      <div className="text-center bg-blue p-8 my-6 rounded-md">
-        <p className="text-black-300">Nguyen Duong The Vi Blog</p>
-      </div>
+      <nav>
+        <div className=" justify-center p-4 border-b bg-slate-50">
+          <div className="container mx-auto">
+            <div className="flex items-center justify-center ">
+              <div className="hidden md:block"></div>
+              <div className="text-center">
+                <div className="text-4xl uppercase">
+                  Nguyen Duong The Vi Blog
+                </div>
+                {/* <div className="text-lg text-slate-500">
+                  Friday, Nov 18,2022
+                </div> */}
+              </div>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div id="menu">
+            <ul className="justify-center text-lg font-medium md:flex">
+              <li className="p-3 mx-2 text-black">
+                <a href="/">Home</a>
+              </li>
+              <li className="p-3 mx-2 text-slate-600 hover:text-black">
+                <a href="/blog">Blog</a>
+              </li>
+              <li className="p-3 mx-2 text-slate-600 hover:text-black">
+                <a href="/about">About</a>
+              </li>
+              <li className="p-3 mx-2 text-slate-600 hover:text-black">
+                <a href="/contact">Contact</a>
+              </li>
+              <li className="p-3 mx-2 text-slate-600 hover:text-black">
+                <a href="/project">Project</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </nav>
     </header>
   );
   const footer = (
-    <footer>
-      <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
-        <h3>Designed by Nguyen Duong The Vi</h3>{" "}
-        <a
-          href="https://github.com/thevi31415/nguyenduongtheviblog"
-          className="text-blue-500 font-bold hover:underline hover:text-blue-700 transition duration-300"
-        >
-          Source Code
-        </a>
-      </div>
-    </footer>
+    <>
+      <footer>
+        <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
+          <h3>Designed by Nguyen Duong The Vi</h3>{" "}
+        </div>
+      </footer>
+    </>
   );
 
   return (
     <html>
       <head />
       <body>
-        <div className="mx-auto  max-w-2xl px-6">
-          {header}
-          {children}
-          {footer}
+        {header}
+        <div className="mx-auto  max-w-8xl px-6">
+          <div className="mx-auto  max-w-2xl px-6">{children}</div>
         </div>
+        {footer}
       </body>
     </html>
   );
