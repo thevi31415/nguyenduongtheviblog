@@ -25,11 +25,12 @@ const getPostMetadata = (): PostMetadata[] => {
 };
 export default async function Home() {
   const postMetadata = getPostMetadata();
+
   const postPreviews = postMetadata.map((post) => (
     // eslint-disable-next-line react/jsx-key
     <>
       <li className="flex flex-col w-full dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
-        <span className="font-bold">
+        <span className="font-bold gradient-text">
           {" "}
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
         </span>
@@ -40,5 +41,15 @@ export default async function Home() {
       </li>
     </>
   ));
-  return <div>{postPreviews}</div>;
+  return (
+    <div>
+      {" "}
+      <div className="flex items-center justify-center">
+        <div className="mb-4 text-black-700 dark:text-gray-100 justify-center">
+          Hi! Im Nguyen Duong The Vi 😍🖐 !
+        </div>
+      </div>
+      {postPreviews}
+    </div>
+  );
 }
