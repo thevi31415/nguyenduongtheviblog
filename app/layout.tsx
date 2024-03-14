@@ -27,7 +27,13 @@ export default function RootLayout({
   const footer = (
     <footer>
       <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
-        <h3>Designed by Nguyen Duong The Vi</h3>
+        <h3>Designed by Nguyen Duong The Vi</h3>{" "}
+        <a
+          href="https://github.com/thevi31415/nguyenduongtheviblog"
+          className="text-blue-500 font-bold hover:underline hover:text-blue-700 transition duration-300"
+        >
+          Source Code
+        </a>
       </div>
     </footer>
   );
