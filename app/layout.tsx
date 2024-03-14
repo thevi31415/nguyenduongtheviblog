@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
+import Link from "next/link";
+import Image from "next/image";
 import Navbar from "./components/navbar/page"; // Thêm dấu chấm phẩy ở đây
 import Footer from "./components/footer/page";
 const inter = Inter({ subsets: ["latin"] });
@@ -15,14 +17,30 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return (
-    <html lang="en">
-      <link rel="icon" href="./favicon.ico" sizes="any" />
+  const header = (
+    <header>
+      <div className="text-center bg-blue p-8 my-6 rounded-md">
+        <p className="text-black-300">Nguyen Duong The Vi Blog</p>
+      </div>
+    </header>
+  );
+  const footer = (
+    <footer>
+      <div className="border-t border-slate-400 mt-12 py-6 text-center text-slate-400">
+        <h3>Designed by Nguyen Duong The Vi</h3>
+      </div>
+    </footer>
+  );
 
-      <body className="min-h-screen bg-white lg:pb-4">
-        <Navbar />
-        {children}
-        <Footer />
+  return (
+    <html>
+      <head />
+      <body>
+        <div className="mx-auto  max-w-2xl px-6">
+          {header}
+          {children}
+          {footer}
+        </div>
       </body>
     </html>
   );
