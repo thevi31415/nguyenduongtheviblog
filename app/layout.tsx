@@ -174,8 +174,8 @@ export default function RootLayout({
       <head />
       <body>
         {header}
-        <div className="mx-auto  max-w-8xl px-6">
-          <div className="mx-auto  max-w-2xl px-6">{children}</div>
+        <div className="mx-auto  max-w-4xl px-4">
+          <div className="mx-auto  max-w-4xl px-4">{children}</div>
         </div>
         {footer}
       </body>
