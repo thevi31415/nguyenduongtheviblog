@@ -5,7 +5,8 @@ import { PostMetadata } from "@/components/PostMetadata";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { Metadata } from "next";
-
+import rehypePrism from "rehype-prism-plus";
+import rehypeCodeTitles from "rehype-code-titles";
 const getPostContent = (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;
