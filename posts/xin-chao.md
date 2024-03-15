@@ -1,7 +1,7 @@
 ---
 title: "Xin chào"
 subtitle: "Bài viết đầu tiên trên blog"
-date: "2024-02-14"
+date: "14-3-2024"
 ---
 
 ## Xin chào các bạn mình là Nguyễn Dương Thế Vĩ !!

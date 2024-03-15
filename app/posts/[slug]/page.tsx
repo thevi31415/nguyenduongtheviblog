@@ -2,6 +2,9 @@ import fs from "fs";
 import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
+import Head from "next/head";
+import { NextSeo } from "next-seo";
+import { Metadata } from "next";
 
 const getPostContent = (slug: string) => {
   const folder = "posts/";
@@ -39,19 +42,29 @@ export const generateStaticParams = async () => {
 const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
-  return (
-    <div>
-      <div className="my-12 text-left gradient-text">
-        <h1 className="text-6xl text-slate-600 font-bold ">
-          {post.data.title}
-        </h1>
-        <p className="text-slate-400 mt-2">{post.data.date}</p>
-      </div>
+  const metadata: Metadata = {
+    title: post.data.title,
+    description: "Your default description here", // Update description if needed
+  };
 
-      <article className="prose">
-        <Markdown>{post.content}</Markdown>
-      </article>
-    </div>
+  return (
+    <>
+      <Head>
+        <title>fhfh</title>
+      </Head>
+      <div>
+        <div className="my-12 text-left gradient-text">
+          <h1 className="text-6xl text-slate-600 font-bold ">
+            {post.data.title}
+          </h1>
+          <p className="text-slate-400 mt-2">{post.data.date}</p>
+        </div>
+
+        <article className="prose">
+          <Markdown>{post.content}</Markdown>
+        </article>
+      </div>
+    </>
   );
 };
 

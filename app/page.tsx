@@ -3,14 +3,13 @@ import Link from "next/link";
 import fs from "fs";
 import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
+import { useEffect, useState } from "react";
 ("@/components/PostMetadata");
 
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
-
-  // Get gray-matter data from each file.
   const posts = markdownPosts.map((fileName) => {
     const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
     const matterResult = matter(fileContents);
@@ -21,15 +20,18 @@ const getPostMetadata = (): PostMetadata[] => {
       slug: fileName.replace(".md", ""),
     };
   });
-  return posts;
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.date.split("-").reverse().join("-"));
+    const dateB = new Date(b.date.split("-").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
+  });
 };
 export default async function Home() {
   const postMetadata = getPostMetadata();
-
   const postPreviews = postMetadata.map((post) => (
     // eslint-disable-next-line react/jsx-key
-    <>
-      <li className="flex flex-col w-full dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
+    <div key={post.slug}>
+      <div className="flex flex-col w-full dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
         <span className="font-bold gradient-text">
           {" "}
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
@@ -38,9 +40,10 @@ export default async function Home() {
           <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
           <time className="text-sm text-slate-400 mt-2">{post.date}</time>
         </div>
-      </li>
-    </>
+      </div>{" "}
+    </div>
   ));
+
   return (
     <div>
       {" "}
@@ -49,7 +52,12 @@ export default async function Home() {
           Hi! Im Nguyen Duong The Vi 😍🖐 !
         </div>
       </div>
-      {postPreviews}
+      <div className="overflow-hidden">
+        {" "}
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+          {postPreviews}
+        </div>{" "}
+      </div>
     </div>
   );
 }
