@@ -40,6 +40,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    🏠
                     <Link href="/" className="gradient-text">
                       Home
                     </Link>
@@ -50,6 +51,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    📒
                     <Link href="/blog" className="gradient-text">
                       Blog
                     </Link>
@@ -61,6 +63,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    🧑🏻‍💻
                     <Link href="/about" className="gradient-text">
                       About
                     </Link>
@@ -72,6 +75,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    📞
                     <Link href="/contact" className="gradient-text">
                       Contact
                     </Link>
@@ -83,6 +87,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    🛠
                     <Link href="/project" className="gradient-text">
                       Projects
                     </Link>
