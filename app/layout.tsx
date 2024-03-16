@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   const header = (
     <header>
-      <nav>
+      <nav className="fixed top-0 left-0 w-full z-10 bg-white border-b border-gray-200 backdrop-blur-sm bg-white/30">
         <div className=" justify-center p-4 border-b bg-white-50">
           <div className="container mx-auto">
             <div className="flex items-center justify-center ">
@@ -217,7 +217,7 @@ export default function RootLayout({
       <body>
         {header}
         <div className="mx-auto  max-w-4xl px-4">
-          <div className="mx-auto  max-w-4xl px-4">{children}</div>
+          <div className="mx-auto  max-w-4xl px-4 mt-40">{children}</div>
         </div>
         {footer}
       </body>

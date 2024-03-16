@@ -28,10 +28,10 @@ const getPostMetadata = (): PostMetadata[] => {
 };
 export default async function Home() {
   const postMetadata = getPostMetadata();
-  const postPreviews = postMetadata.slice(0, 4).map((post) => (
+  const postPreviews = postMetadata.slice(0, 6).map((post) => (
     // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
-      <div className="flex flex-col w-full dark:hover:bg-slate-900 border hover:bg-slate-50 rounded p-4 mb-4 dark:border-slate-600 dark:bg-black hover:shadow-sm dark:hover:shadow-sm">
+      <div className="flex flex-col w-full  border hover:bg-slate-50 rounded p-4 mb-4   hover:shadow-sm ">
         <span className="font-bold gradient-text">
           {" "}
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
@@ -54,13 +54,11 @@ export default async function Home() {
       </div> */}
       <div className="mb-6 mt-5 flex flex-col-reverse justify-between items-start sm:flex-row p-4 rounded-lg border-2 border-blue-300">
         <div className="flex flex-col pr-8">
-          <h1 className="font-bold text-2xl md:text-2xl -ml-0.5 mb-2 text-black dark:text-white">
+          <h1 className="font-bold text-2xl md:text-2xl -ml-0.5 mb-2 text-black ">
             Hi! Im Nguyen Duong The Vi 😍 !
           </h1>
-          <p className="text-gray-700 dark:text-gray-200 mb-4">
-            Ho Chi Minh City, Vietnam
-          </p>
-          <p className="text-gray-600 dark:text-gray-400 mb-16">
+          <p className="text-gray-700  mb-4">Ho Chi Minh City, Vietnam</p>
+          <p className="text-gray-600  mb-16">
             Currently, I am a third-year student at Ho Chi Minh City University
             of Technology and Education.
           </p>
