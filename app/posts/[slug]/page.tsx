@@ -3,6 +3,7 @@ import Markdown from "markdown-to-jsx";
 import matter from "gray-matter";
 import Image from "next/image";
 import Giscus from "@giscus/react";
+import Styles from "./style.module.css";
 import Comments from "../../components/comments";
 import { PostMetadata } from "@/components/PostMetadata";
 import Head from "next/head";
@@ -65,12 +66,12 @@ const PostPage = (props: any) => {
 
   return (
     <div>
-      <div className="my-12 text-left gradient-text">
-        <h1 className="text-6xl text-slate-600 font-bold ">
+      <div className="my-6 text-left gradient-text">
+        <h1 className="text-4xl text-slate-600 font-bold ">
           {post.data.title}
         </h1>
       </div>
-      <div className="flex justify-between w-full mb-12">
+      <div className="flex justify-between w-full mb-6 ">
         <div>
           <a className="flex gap-4 items-center" href="/about">
             <div className="relative w-12 h-12">
@@ -139,9 +140,17 @@ const PostPage = (props: any) => {
         </div>
       </div>
 
-      <article className="prose">
-        <Markdown>{post.content}</Markdown>
+      <article className="flex items-start justify-center prose max-w-none max-w-full">
+        <div className={Styles.markdownContainer}>
+          <Markdown className={Styles.markdown}>{post.content}</Markdown>
+        </div>
       </article>
+      <div className="bg-gradient-to-r from-blue-400 to-blue-800 text-white border-l-4 border-blue-600 rounded-lg p-4 mb-8">
+        <p className="font-semibold">Cảm ơn bạn đã đọc bài viết ! 🥰 🥰 🥰</p>
+        <p className="text-sm">
+          Hãy nêu ý kiến của mình ở phần bình luận phía dưới nhé !
+        </p>
+      </div>
       <Comments />
     </div>
   );

@@ -1,0 +1,7 @@
+.markdown {
+}
+.markdownContainer {
+  max-width: 100%; /* Đảm bảo nội dung Markdown không vượt quá chiều rộng của article */
+  /* Hiển thị thanh cuộn ngang nếu nội dung quá rộng */
+  word-wrap: break-word;
+}

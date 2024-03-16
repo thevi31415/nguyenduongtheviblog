@@ -31,16 +31,16 @@ export default async function Home() {
   const postPreviews = postMetadata.slice(0, 6).map((post) => (
     // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
-      <div className="flex flex-col w-full  border hover:bg-slate-50 rounded p-4 mb-4   hover:shadow-sm ">
+      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
         <span className="font-bold gradient-text">
           {" "}
           <Link href={`/posts/${post.slug}`}>{post.title}</Link>
         </span>
-        <div className="flex justify-between">
-          <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
-          <time className="text-sm text-slate-400 mt-2">{post.date}</time>
+        <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
+        <div className="mt-auto">
+          <time className="text-sm text-slate-400">🕖{post.date}</time>
         </div>
-      </div>{" "}
+      </div>
     </div>
   ));
 
