@@ -74,7 +74,7 @@ const PostPage = (props: any) => {
           {post.data.title}
         </h1>
       </div>
-      <div className="flex justify-between w-full mb-6 ">
+      <div className="flex justify-between w-full  ">
         <div>
           <a className="flex items-center" href="/about">
             <div className="relative w-12 h-12">
@@ -143,7 +143,7 @@ const PostPage = (props: any) => {
         </div>
       </div>
       <div className=" bg-white rounded-lg p-3">
-        <article className="flex items-start justify-center prose max-w-none max-w-full  ">
+        <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>
           </div>

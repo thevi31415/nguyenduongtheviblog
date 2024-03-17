@@ -87,7 +87,7 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
-                    <a href="/project">🛠/</a>
+                    <a href="/project">🛠</a>
                     <Link href="/project" className="gradient-text">
                       Projects
                     </Link>

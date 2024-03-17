@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
 import { useEffect, useState } from "react";
 import { Metadata } from "next";
+import { TagsMetadata } from "@/components/TagsMatadata";
 ("@/components/PostMetadata");
 export const metadata: Metadata = {
   title: "The Vi Blog",
@@ -30,8 +31,10 @@ const getPostMetadata = (): PostMetadata[] => {
     return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
   });
 };
+
 export default async function Home() {
   const postMetadata = getPostMetadata();
+
   const postPreviews = postMetadata.slice(0, 6).map((post) => (
     // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
