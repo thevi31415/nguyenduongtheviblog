@@ -8,7 +8,14 @@ export const metadata: Metadata = {
 export default function About() {
   return (
     <div className="flex flex-col justify-center items-center max-w-2xl mx-auto mb-16 w-full">
-      <Image src="/profile.jpg" width={80} height={80} className="rounded-lg" />
+      <Image
+        src="/profile.jpg"
+        width={80}
+        height={80}
+        alt="Nguyen Duong The Vi"
+        sizes="30vw"
+        className="rounded-lg"
+      />
       <p className="mt-4">
         Hello! My name is Nguyen Duong The Vi. I am a third-year student
         majoring in Information Technology at Ho Chi Minh City University of
