@@ -1,16 +1,15 @@
+"use client";
 import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 
+import { Fragment, useEffect, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import Navbar from "./components/navbar/page"; // Thêm dấu chấm phẩy ở đây
 import Footer from "./components/footer/page";
 const inter = Inter({ subsets: ["latin"] });
-export const metadata: Metadata = {
-  title: "The Vi Blog",
-  description: "This is my personal blog, sharing about my everyday life.",
-};
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -210,7 +209,24 @@ export default function RootLayout({
       </div>
     </>
   );
+  const [show, setShow] = useState(false);
 
+  useEffect(() => {
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 200) {
+        setShow(true);
+      } else {
+        setShow(false);
+      }
+    });
+  });
+
+  const jumpToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  };
   return (
     <html>
       <head />
@@ -220,6 +236,33 @@ export default function RootLayout({
           <div className="mx-auto  max-w-4xl px-4 mt-40">{children}</div>
         </div>
         {footer}
+        <Fragment>
+          {show ? (
+            <div className="fixed bottom-0 right-0 mb-6 mr-6 z-10">
+              <button
+                onClick={jumpToTop}
+                className="bg-gradient-to-r from-blue-500 to-blue-700 text-white rounded-full p-2 hover:bg-blue-900 transition"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M5 10l7-7m0 0l7 7m-7-7v18"
+                  />
+                </svg>
+              </button>
+            </div>
+          ) : (
+            <Fragment />
+          )}
+        </Fragment>
       </body>
     </html>
   );

@@ -22,7 +22,10 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "next-share";
-
+export const metadata: Metadata = {
+  title: "The Vi Blog",
+  description: "This is my personal blog, sharing about my everyday life.",
+};
 const getPostContent = (slug: string) => {
   const folder = "posts/";
   const file = `${folder}${slug}.md`;

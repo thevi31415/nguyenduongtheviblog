@@ -4,8 +4,12 @@ import fs from "fs";
 import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
 import { useEffect, useState } from "react";
+import { Metadata } from "next";
 ("@/components/PostMetadata");
-
+export const metadata: Metadata = {
+  title: "The Vi Blog",
+  description: "This is my personal blog, sharing about my everyday life.",
+};
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
