@@ -51,7 +51,19 @@ export default function Blog() {
   return (
     <div>
       <div className="overflow-hidden">
-        {" "}
+        {/* <ul className="flex flex-wrap items-center justify-center">
+          <li>
+            <a
+              title="all"
+              className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800 from-cyan-500 to-blue-500 text-white"
+              href="/blog"
+            >
+              <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0  bg-opacity-0">
+                All
+              </span>
+            </a>
+          </li>
+        </ul>{" "} */}
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           📝All
         </h4>

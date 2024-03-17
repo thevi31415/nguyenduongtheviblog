@@ -76,11 +76,11 @@ const PostPage = (props: any) => {
       </div>
       <div className="flex justify-between w-full mb-6 ">
         <div>
-          <a className="flex gap-4 items-center" href="/about">
+          <a className="flex items-center" href="/about">
             <div className="relative w-12 h-12">
               <div className="w-full h-full">
                 <Image
-                  className="rounded-full"
+                  className="rounded-full  h-11 w-11  object-cover"
                   src="/profile.jpg"
                   width={500}
                   height={500}
@@ -89,9 +89,9 @@ const PostPage = (props: any) => {
               </div>
             </div>
 
-            <div className="flex flex-col font-bold">
+            <div className="flex flex-col ml-1  font-medium text-sky-600 hover:text-sky-600">
               <p>Nguyen Duong The Vi</p>
-              <p className="text-sm text-blue-400">{post.data.date}</p>
+              <p className="mt-1 text-sm text-slate-900">{post.data.date}</p>
             </div>
           </a>
         </div>
