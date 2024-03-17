@@ -33,6 +33,7 @@ export default function RootLayout({
             </div>
           </div>
         </div>
+
         <div>
           <div id="menu">
             <ul className="justify-center text-lg font-medium md:flex">
@@ -103,13 +104,13 @@ export default function RootLayout({
   const footer = (
     <>
       <div className="text-center">
-        <span className="block text-sm text-center text-gray-500 dark:text-gray-400">
+        <span className="block text-sm text-center text-gray-500 dark:text-gray-400 mb-3">
           © 2024 Nguyen Duong The Vi . All Rights Reserved.
         </span>
         <a
           href="https://github.com/thevi31415/nguyenduongtheviblog"
           target="_blank"
-          className="text-blue-500 font-bold hover:underline hover:text-blue-700 transition duration-300"
+          className="  text-lg rounded-full bg-sky-400/10 px-2 py-1 font-medium leading-5 text-sky-600 dark:text-sky-400"
         >
           Source code
         </a>

@@ -91,7 +91,7 @@ const PostPage = (props: any) => {
 
             <div className="flex flex-col ml-1  font-medium text-sky-600 hover:text-sky-600">
               <p>Nguyen Duong The Vi</p>
-              <p className="mt-1 text-sm text-slate-900">{post.data.date}</p>
+              <p className=" text-sm text-slate-900">{post.data.date}</p>
             </div>
           </a>
         </div>
@@ -142,18 +142,20 @@ const PostPage = (props: any) => {
           </a>
         </div>
       </div>
-
-      <article className="flex items-start justify-center prose max-w-none max-w-full">
-        <div className={Styles.markdownContainer}>
-          <Markdown className={Styles.markdown}>{post.content}</Markdown>
+      <div className=" bg-white rounded-lg p-3">
+        <article className="flex items-start justify-center prose max-w-none max-w-full  ">
+          <div className={Styles.markdownContainer}>
+            <Markdown className={Styles.markdown}>{post.content}</Markdown>
+          </div>
+        </article>
+        <div className="bg-gradient-to-r from-blue-400 to-blue-800 text-white border-l-4 border-blue-600 rounded-lg p-4 mb-8">
+          <p className="font-semibold">Cảm ơn bạn đã đọc bài viết ! 🥰 🥰 🥰</p>
+          <p className="text-sm">
+            Hãy nêu ý kiến của mình ở phần bình luận phía dưới nhé !
+          </p>
         </div>
-      </article>
-      <div className="bg-gradient-to-r from-blue-400 to-blue-800 text-white border-l-4 border-blue-600 rounded-lg p-4 mb-8">
-        <p className="font-semibold">Cảm ơn bạn đã đọc bài viết ! 🥰 🥰 🥰</p>
-        <p className="text-sm">
-          Hãy nêu ý kiến của mình ở phần bình luận phía dưới nhé !
-        </p>
       </div>
+
       <Comments />
     </div>
   );
