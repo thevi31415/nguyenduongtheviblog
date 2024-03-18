@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   description: "This is my personal blog, sharing about my everyday life.",
 };
 const getPostMetadata = (): PostMetadata[] => {
-  const folder = "post/";
+  const folder = "post";
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts.map((fileName) => {
