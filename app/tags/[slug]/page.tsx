@@ -33,29 +33,8 @@ const getPostMetadata = (): PostMetadata[] => {
     return dateB.getTime() - dateA.getTime();
   });
 };
-const getTagsMetadata = (): TagsMetadata[] => {
-  const folder = "tags/";
-  const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith(".md"));
-  const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`tags/${fileName}`, "utf8");
-    const matterResult = matter(fileContents);
-    return {
-      title: matterResult.data.title,
-      date: matterResult.data.date,
-      subtitle: matterResult.data.subtitle,
-      slug: fileName.replace(".md", ""),
-    };
-  });
-  return posts.sort((a, b) => {
-    const dateA = new Date(a.date.split("-").reverse().join("-"));
-    const dateB = new Date(b.date.split("-").reverse().join("-"));
-    return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
-  });
-};
 const Tags = (props: any) => {
   const postMetadata = getPostMetadata();
-  const tagsMetadata = getTagsMetadata();
   const postPreviews = postMetadata.map((post) => (
     // eslint-disable-next-line react/jsx-key
 
@@ -72,54 +51,7 @@ const Tags = (props: any) => {
       </div>
     </div>
   ));
-  const tagsPreviews = tagsMetadata.slice(0, 100).map((tags) => (
-    <div key={tags.slug}>
-      <li>
-        <Link title="all" href={`/tags/${tags.slug}`}>
-          {tags.title[0].toUpperCase() >= "A" &&
-          tags.title[0].toUpperCase() <= "D" ? (
-            <span className="bg-blue-100 text-blue-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-              # 🥇 {tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "E" &&
-            tags.title[0].toUpperCase() <= "G" ? (
-            <span className="bg-gray-100 text-gray-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
-              # 🥇 {tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "H" &&
-            tags.title[0].toUpperCase() <= "K" ? (
-            <span className="bg-red-100 text-red-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
-              #{tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "L" &&
-            tags.title[0].toUpperCase() <= "O" ? (
-            <span className="bg-green-100 text-green-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
-              #{tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "P" &&
-            tags.title[0].toUpperCase() <= "S" ? (
-            <span className="bg-yellow-100 text-yellow-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
-              #{tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "T" &&
-            tags.title[0].toUpperCase() <= "V" ? (
-            <span className="bg-indigo-100 text-indigo-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
-              #{tags.title}
-            </span>
-          ) : tags.title[0].toUpperCase() >= "W" &&
-            tags.title[0].toUpperCase() <= "Z" ? (
-            <span className="bg-purple-100 text-purple-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
-              #{tags.title}
-            </span>
-          ) : (
-            <span className="bg-pink-100 text-pink-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
-              #{tags.title}
-            </span>
-          )}
-        </Link>
-      </li>
-    </div>
-  ));
+
   return (
     <div>
       <div className="overflow-hidden">
