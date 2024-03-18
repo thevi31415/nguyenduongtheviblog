@@ -147,10 +147,13 @@ const PostPage = (props: any) => {
       </div>
       <div></div>
       <div className=" bg-white rounded-lg">
-        {/* <span className="bg-pink-100 mt-5 text-pink-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
-          {post.data.tag}
-        </span> */}
-
+        <div className="flex gap-2 flex-wrap p-4">
+          <Link title="all" href={`/tags/${post.data.tag}`}>
+            <span className="bg-gray-100 rounded-full px-3 py-1 text-xl font-semibold text-gray-600">
+              # {post.data.tag}
+            </span>
+          </Link>
+        </div>
         <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>
