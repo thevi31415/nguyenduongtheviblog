@@ -43,13 +43,44 @@ export const metadata: Metadata = {
 //     return 0;
 //   });
 // };
+// const getPostMetadata = (tagSlug: string): PostMetadata[] => {
+//   const folder = path.join(process.cwd(), "post");
+//   const files = fs.readdirSync(folder);
+//   const markdownPosts = files.filter((file) => file.endsWith(".md"));
+//   const posts = markdownPosts
+//     .map((fileName) => {
+//       const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
+//       const matterResult = matter(fileContents);
+//       const tags = matterResult.data.tag || [];
+//       if (tags.includes(tagSlug)) {
+//         return {
+//           title: matterResult.data.title,
+//           tag: matterResult.data.tag,
+//           date: matterResult.data.date,
+//           subtitle: matterResult.data.subtitle,
+//           slug: fileName.replace(".md", ""),
+//           id: matterResult.data.id,
+//         };
+//       }
+//       return null;
+//     })
+//     .filter((post): post is PostMetadata => post !== null); // Lọc ra các bài viết không null
+//   return posts.sort((a, b) => {
+//     if (a && b) {
+//       const dateA = new Date(a.date.split("-").reverse().join("-"));
+//       const dateB = new Date(b.date.split("-").reverse().join("-"));
+//       return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
+//     }
+//     return 0;
+//   });
+// };
 const getPostMetadata = (tagSlug: string): PostMetadata[] => {
   const folder = path.join(process.cwd(), "post");
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts
     .map((fileName) => {
-      const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
+      const fileContents = fs.readFileSync(path.join(folder, fileName), "utf8");
       const matterResult = matter(fileContents);
       const tags = matterResult.data.tag || [];
       if (tags.includes(tagSlug)) {
@@ -67,9 +98,7 @@ const getPostMetadata = (tagSlug: string): PostMetadata[] => {
     .filter((post): post is PostMetadata => post !== null); // Lọc ra các bài viết không null
   return posts.sort((a, b) => {
     if (a && b) {
-      const dateA = new Date(a.date.split("-").reverse().join("-"));
-      const dateB = new Date(b.date.split("-").reverse().join("-"));
-      return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
+      return parseInt(a.id) - parseInt(b.id); // Sắp xếp theo ID
     }
     return 0;
   });
