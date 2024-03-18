@@ -22,6 +22,7 @@ import {
   LinkedinShareButton,
   LinkedinIcon,
 } from "next-share";
+import Link from "next/link";
 export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
@@ -143,7 +144,11 @@ const PostPage = (props: any) => {
           </a>
         </div>
       </div>
+      <div></div>
       <div className=" bg-white rounded-lg">
+        {/* <span className="bg-pink-100 mt-5 text-pink-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
+          {post.data.tag}
+        </span> */}
         <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>
