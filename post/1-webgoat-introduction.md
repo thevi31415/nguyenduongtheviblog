@@ -30,3 +30,10 @@ Nhập lại unique code ở phần trước `golbiveht` là xong:
 ![alt](/images/webgoat/H5.png)
 
 Đến đây đã hoàn thành phần Introduction !!!
+
+### Tham khảo
+
+1. PseudoTime:
+
+- [Your mailbox](https://www.youtube.com/watch?v=s23iR7n7W6E&list=PLmC06jCwVwlqxV-Hm1vOSFEnS3z4yP6fd&index=5 "Link")
+- [Landing page](https://www.youtube.com/watch?v=r6333Rjgjoo&list=PLmC06jCwVwlqxV-Hm1vOSFEnS3z4yP6fd&index=6 "Link 2")
