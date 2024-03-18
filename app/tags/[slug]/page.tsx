@@ -76,22 +76,29 @@ const getPostMetadata = (tagSlug: string): PostMetadata[] => {
 const Tags = (props: any) => {
   const slug = props.params.slug;
   const postMetadata = getPostMetadata(slug);
-  const postPreviews = postMetadata.map((post) => (
-    // eslint-disable-next-line react/jsx-key
 
-    <div key={post.slug}>
-      <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
-        <span className="font-bold gradient-text">
-          {" "}
-          <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-        </span>
-        <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
-        <div className="mt-auto">
-          <time className="text-sm text-slate-400">🕖 {post.date}</time>
+  const postPreviews =
+    postMetadata.length > 0 ? (
+      postMetadata.map((post) => (
+        // eslint-disable-next-line react/jsx-key
+        <div key={post.slug}>
+          <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
+            <span className="font-bold gradient-text">
+              {" "}
+              <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+            </span>
+            <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
+            <div className="mt-auto">
+              <time className="text-sm text-slate-400">🕖 {post.date}</time>
+            </div>
+          </div>
         </div>
+      ))
+    ) : (
+      <div className="flex text-2xl font-sm mb-5">
+        🕵🏼‍♂️ Không tìm thấy kết quả nào !
       </div>
-    </div>
-  ));
+    );
 
   return (
     <div>
@@ -100,7 +107,11 @@ const Tags = (props: any) => {
           # {slug}
         </h4>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
-          {postPreviews}
+          {postPreviews ? (
+            postPreviews
+          ) : (
+            <div className="text-red-500">Not Found</div>
+          )}
         </div>{" "}
       </div>
     </div>
