@@ -53,7 +53,7 @@ const getTagsMetadata = (): TagsMetadata[] => {
     return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
   });
 };
-export default function Blog() {
+const Tags = (props: any) => {
   const postMetadata = getPostMetadata();
   const tagsMetadata = getTagsMetadata();
   const postPreviews = postMetadata.map((post) => (
@@ -141,4 +141,5 @@ export default function Blog() {
       </div>
     </div>
   );
-}
+};
+export default Tags;
