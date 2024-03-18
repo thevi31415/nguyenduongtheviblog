@@ -72,12 +72,12 @@ const PostPage = (props: any) => {
 
   return (
     <div>
-      <div className="my-3 text-left gradient-text">
+      <div className="my-3 text-left gradient-text ">
         <h1 className="text-4xl text-slate-600 font-bold ">
           {post.data.title}
         </h1>
       </div>
-      <div className="flex justify-between w-full  ">
+      <div className="flex justify-between w-full  mt-5">
         <div>
           <a className="flex items-center" href="/about">
             <div className="relative w-12 h-12">
@@ -93,7 +93,7 @@ const PostPage = (props: any) => {
             </div>
 
             <div className="flex flex-col ml-1  font-medium text-sky-600 hover:text-sky-600">
-              <p>Nguyen Duong The Vi</p>
+              <p className="hover:underline">Nguyen Duong The Vi</p>
               <p className=" text-sm text-slate-900">{post.data.date}</p>
             </div>
           </a>
