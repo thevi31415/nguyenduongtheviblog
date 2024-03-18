@@ -15,45 +15,31 @@ export const metadata: Metadata = {
   description: "This is my personal blog, sharing about my everyday life.",
 };
 
-const getPostMetadata = (tagSlug: string): PostMetadata[] => {
+const getPostMetadata = (): PostMetadata[] => {
   const folder = "post/";
-  if (!fs.existsSync(folder)) {
-    // Handle the case where the folder doesn't exist
-    console.error(`Folder '${folder}' does not exist.`);
-    return [];
-  }
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
-  const posts = markdownPosts
-    .map((fileName) => {
-      const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
-      const matterResult = matter(fileContents);
-      const tags = matterResult.data.tag || [];
-      if (tags.includes(tagSlug)) {
-        return {
-          title: matterResult.data.title,
-          tag: matterResult.data.tag,
-          date: matterResult.data.date,
-          subtitle: matterResult.data.subtitle,
-          slug: fileName.replace(".md", ""),
-        };
-      }
-      return null; // Nếu bài viết không có tag bằng slug, trả về null
-    })
-    .filter((post): post is PostMetadata => post !== null); // Lọc ra các bài viết không null
+  const posts = markdownPosts.map((fileName) => {
+    const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
+    const matterResult = matter(fileContents);
+    return {
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tag: matterResult.data.tag,
+      subtitle: matterResult.data.subtitle,
+      slug: fileName.replace(".md", ""),
+    };
+  });
   return posts.sort((a, b) => {
-    if (a && b) {
-      const dateA = new Date(a.date.split("-").reverse().join("-"));
-      const dateB = new Date(b.date.split("-").reverse().join("-"));
-      return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
-    }
-    return 0;
+    const dateA = new Date(a.date.split("-").reverse().join("-"));
+    const dateB = new Date(b.date.split("-").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime();
   });
 };
 
 export default function Tags(props: any) {
   const slug = props.params.slug;
-  const postMetadata = getPostMetadata(slug);
+  const postMetadata = getPostMetadata();
   const postPreviews = postMetadata.map((post) => (
     // eslint-disable-next-line react/jsx-key
 
