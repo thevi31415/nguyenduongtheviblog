@@ -11,6 +11,22 @@ export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
+const colors = [
+  { bg: "bg-blue-100", text: "text-blue-800" },
+  { bg: "bg-gray-100", text: "text-gray-800" },
+  { bg: "bg-red-100", text: "text-red-800" },
+  { bg: "bg-green-100", text: "text-green-800" },
+  { bg: "bg-yellow-100", text: "text-yellow-800" },
+  { bg: "bg-indigo-100", text: "text-indigo-800" },
+  { bg: "bg-purple-100", text: "text-purple-800" },
+  { bg: "bg-pink-100", text: "text-pink-800" },
+];
+
+const randomColor = () => {
+  const randomIndex = Math.floor(Math.random() * colors.length);
+  return colors[randomIndex];
+};
+
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
@@ -51,6 +67,7 @@ const getTagsMetadata = (): TagsMetadata[] => {
     return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
   });
 };
+const randomNumber = Math.floor(Math.random() * 10) + 1;
 export default function Blog() {
   const postMetadata = getPostMetadata();
   const tagsMetadata = getTagsMetadata();
@@ -70,28 +87,67 @@ export default function Blog() {
       </div>
     </div>
   ));
-  const tagsPreviews = tagsMetadata.slice(0, 6).map((tags) => (
-    // eslint-disable-next-line react/jsx-key
+  const tagsPreviews = tagsMetadata.slice(0, 100).map((tags) => (
     <div key={tags.slug}>
-      <ul className="flex flex-wrap items-center justify-center">
-        <li>
-          <a
-            title="all"
-            className="group relative mb-2 mr-2 inline-flex items-center justify-center overflow-hidden rounded-lg bg-gradient-to-br from-cyan-500 to-blue-500 p-0.5 text-sm font-medium text-gray-900 hover:text-white focus:outline-none focus:ring-4 focus:ring-cyan-200 group-hover:from-cyan-500 group-hover:to-blue-500 dark:text-white dark:focus:ring-cyan-800 from-cyan-500 to-blue-500 text-white"
-            href="/blog"
-          >
-            <span className="relative rounded-md bg-white px-5 py-2.5 transition-all duration-75 ease-in group-hover:bg-opacity-0  bg-opacity-0">
-              {tags.title}
+      <li>
+        <Link title="all" href={`/tags/${tags.slug}`}>
+          {tags.title[0].toUpperCase() >= "A" &&
+          tags.title[0].toUpperCase() <= "D" ? (
+            <span className="bg-blue-100 text-blue-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+              # 🥇 {tags.title}
             </span>
-          </a>
-        </li>
-      </ul>
+          ) : tags.title[0].toUpperCase() >= "E" &&
+            tags.title[0].toUpperCase() <= "G" ? (
+            <span className="bg-gray-100 text-gray-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-gray-700 dark:text-gray-300">
+              # 🥇 {tags.title}
+            </span>
+          ) : tags.title[0].toUpperCase() >= "H" &&
+            tags.title[0].toUpperCase() <= "K" ? (
+            <span className="bg-red-100 text-red-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-red-900 dark:text-red-300">
+              #{tags.title}
+            </span>
+          ) : tags.title[0].toUpperCase() >= "L" &&
+            tags.title[0].toUpperCase() <= "O" ? (
+            <span className="bg-green-100 text-green-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-green-900 dark:text-green-300">
+              #{tags.title}
+            </span>
+          ) : tags.title[0].toUpperCase() >= "P" &&
+            tags.title[0].toUpperCase() <= "S" ? (
+            <span className="bg-yellow-100 text-yellow-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-yellow-900 dark:text-yellow-300">
+              #{tags.title}
+            </span>
+          ) : tags.title[0].toUpperCase() >= "T" &&
+            tags.title[0].toUpperCase() <= "V" ? (
+            <span className="bg-indigo-100 text-indigo-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-indigo-900 dark:text-indigo-300">
+              #{tags.title}
+            </span>
+          ) : tags.title[0].toUpperCase() >= "W" &&
+            tags.title[0].toUpperCase() <= "Z" ? (
+            <span className="bg-purple-100 text-purple-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-purple-900 dark:text-purple-300">
+              #{tags.title}
+            </span>
+          ) : (
+            <span className="bg-pink-100 text-pink-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
+              #{tags.title}
+            </span>
+          )}
+        </Link>
+      </li>
     </div>
   ));
   return (
     <div>
       <div className="overflow-hidden">
-        {/* {tagsPreviews} */}
+        <ul className="flex flex-wrap items-center justify-center mb-5">
+          <li>
+            <Link title="all" href={`#`}>
+              <span className="bg-blue-100 text-blue-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
+                #all
+              </span>
+            </Link>
+          </li>
+          {tagsPreviews}
+        </ul>
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           📝All
         </h4>

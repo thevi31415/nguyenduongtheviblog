@@ -1,5 +1,6 @@
 ---
 title: "Xin chào"
+tag: "life"
 subtitle: "Bài viết đầu tiên trên blog"
 date: "14-3-2024"
 ---

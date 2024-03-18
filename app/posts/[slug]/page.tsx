@@ -44,6 +44,7 @@ const getPostMetadata = (): PostMetadata[] => {
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,
+      tag: matterResult.data.tag,
       date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
@@ -69,7 +70,7 @@ const PostPage = (props: any) => {
 
   return (
     <div>
-      <div className="my-6 text-left gradient-text">
+      <div className="my-3 text-left gradient-text">
         <h1 className="text-4xl text-slate-600 font-bold ">
           {post.data.title}
         </h1>
@@ -142,7 +143,7 @@ const PostPage = (props: any) => {
           </a>
         </div>
       </div>
-      <div className=" bg-white rounded-lg p-3">
+      <div className=" bg-white rounded-lg">
         <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>
