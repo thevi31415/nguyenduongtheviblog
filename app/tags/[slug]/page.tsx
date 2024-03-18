@@ -96,15 +96,6 @@ const Tags = (props: any) => {
   return (
     <div>
       <div className="overflow-hidden">
-        <ul className="flex flex-wrap items-center justify-center mb-5">
-          <li>
-            <Link title="all" href={`#`}>
-              <span className="bg-blue-100 text-blue-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-blue-900 dark:text-blue-300">
-                #all
-              </span>
-            </Link>
-          </li>
-        </ul>
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           # {slug}
         </h4>
