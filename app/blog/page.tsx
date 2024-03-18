@@ -22,11 +22,6 @@ const colors = [
   { bg: "bg-pink-100", text: "text-pink-800" },
 ];
 
-const randomColor = () => {
-  const randomIndex = Math.floor(Math.random() * colors.length);
-  return colors[randomIndex];
-};
-
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
@@ -37,6 +32,7 @@ const getPostMetadata = (): PostMetadata[] => {
     return {
       title: matterResult.data.title,
       date: matterResult.data.date,
+      tag: matterResult.data.tag,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
     };
@@ -44,7 +40,7 @@ const getPostMetadata = (): PostMetadata[] => {
   return posts.sort((a, b) => {
     const dateA = new Date(a.date.split("-").reverse().join("-"));
     const dateB = new Date(b.date.split("-").reverse().join("-"));
-    return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
+    return dateB.getTime() - dateA.getTime();
   });
 };
 const getTagsMetadata = (): TagsMetadata[] => {
