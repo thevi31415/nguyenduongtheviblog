@@ -24,6 +24,7 @@ const getPostMetadata = (): PostMetadata[] => {
       tag: matterResult.data.tag,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
+      id: matterResult.data.id,
     };
   });
   return posts.sort((a, b) => {
@@ -50,7 +51,7 @@ const getTagsMetadata = (): TagsMetadata[] => {
   return posts.sort((a, b) => {
     const dateA = new Date(a.date.split("-").reverse().join("-"));
     const dateB = new Date(b.date.split("-").reverse().join("-"));
-    return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
+    return dateB.getTime() - dateA.getTime();
   });
 };
 export default function Blog() {
