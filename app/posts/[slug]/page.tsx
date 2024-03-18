@@ -48,6 +48,7 @@ const getPostMetadata = (): PostMetadata[] => {
       tag: matterResult.data.tag,
       date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
+      id: matterResult.data.id,
       slug: fileName.replace(".md", ""),
     };
   });
@@ -149,6 +150,7 @@ const PostPage = (props: any) => {
         {/* <span className="bg-pink-100 mt-5 text-pink-800 text-lg font-medium me-2 px-2.5 py-0.5 rounded dark:bg-pink-900 dark:text-pink-300">
           {post.data.tag}
         </span> */}
+
         <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>

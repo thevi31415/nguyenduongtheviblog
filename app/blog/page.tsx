@@ -44,6 +44,7 @@ const getTagsMetadata = (): TagsMetadata[] => {
       date: matterResult.data.date,
       subtitle: matterResult.data.subtitle,
       slug: fileName.replace(".md", ""),
+      id: matterResult.data.id,
     };
   });
   return posts.sort((a, b) => {
