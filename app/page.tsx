@@ -12,11 +12,11 @@ export const metadata: Metadata = {
   description: "This is my personal blog, sharing about my everyday life.",
 };
 const getPostMetadata = (): PostMetadata[] => {
-  const folder = "posts/";
+  const folder = "post/";
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
+    const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,

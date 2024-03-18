@@ -27,20 +27,20 @@ export const metadata: Metadata = {
   description: "This is my personal blog, sharing about my everyday life.",
 };
 const getPostContent = (slug: string) => {
-  const folder = "posts/";
+  const folder = "post/";
   const file = `${folder}${slug}.md`;
   const content = fs.readFileSync(file, "utf8");
   const matterResult = matter(content);
   return matterResult;
 };
 const getPostMetadata = (): PostMetadata[] => {
-  const folder = "posts/";
+  const folder = "post/";
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
 
   // Get gray-matter data from each file.
   const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
+    const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
     const matterResult = matter(fileContents);
     return {
       title: matterResult.data.title,

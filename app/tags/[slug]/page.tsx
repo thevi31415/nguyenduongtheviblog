@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 };
 
 const getPostMetadata = (tagSlug: string): PostMetadata[] => {
-  const folder = "posts/";
+  const folder = "post/";
   if (!fs.existsSync(folder)) {
     // Handle the case where the folder doesn't exist
     console.error(`Folder '${folder}' does not exist.`);
@@ -26,7 +26,7 @@ const getPostMetadata = (tagSlug: string): PostMetadata[] => {
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts
     .map((fileName) => {
-      const fileContents = fs.readFileSync(`posts/${fileName}`, "utf8");
+      const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
       const matterResult = matter(fileContents);
       const tags = matterResult.data.tag || [];
       if (tags.includes(tagSlug)) {
