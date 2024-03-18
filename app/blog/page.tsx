@@ -11,17 +11,6 @@ export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
-const colors = [
-  { bg: "bg-blue-100", text: "text-blue-800" },
-  { bg: "bg-gray-100", text: "text-gray-800" },
-  { bg: "bg-red-100", text: "text-red-800" },
-  { bg: "bg-green-100", text: "text-green-800" },
-  { bg: "bg-yellow-100", text: "text-yellow-800" },
-  { bg: "bg-indigo-100", text: "text-indigo-800" },
-  { bg: "bg-purple-100", text: "text-purple-800" },
-  { bg: "bg-pink-100", text: "text-pink-800" },
-];
-
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "posts/";
   const files = fs.readdirSync(folder);
@@ -63,7 +52,6 @@ const getTagsMetadata = (): TagsMetadata[] => {
     return dateB.getTime() - dateA.getTime(); // Sắp xếp giảm dần, bài đăng mới nhất sẽ đứng trước
   });
 };
-const randomNumber = Math.floor(Math.random() * 10) + 1;
 export default function Blog() {
   const postMetadata = getPostMetadata();
   const tagsMetadata = getTagsMetadata();

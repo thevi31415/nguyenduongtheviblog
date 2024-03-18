@@ -17,6 +17,11 @@ export const metadata: Metadata = {
 
 const getPostMetadata = (tagSlug: string): PostMetadata[] => {
   const folder = "posts/";
+  if (!fs.existsSync(folder)) {
+    // Handle the case where the folder doesn't exist
+    console.error(`Folder '${folder}' does not exist.`);
+    return [];
+  }
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts
@@ -69,7 +74,7 @@ export default function Tags(props: any) {
     <div>
       <div className="overflow-hidden">
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
-          # {slug}
+          #
         </h4>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
           {postPreviews}
