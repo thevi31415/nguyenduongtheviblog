@@ -5,6 +5,7 @@ import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
 import { Metadata } from "next";
 import { TagsMetadata } from "@/components/TagsMatadata";
+import path from "path";
 ("@/components/PostMetadata");
 export const metadata: Metadata = {
   title: "The Vi Blog",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
 // };
 
 const getPostMetadata = (): PostMetadata[] => {
-  const folder = "post";
+  const folder = path.join(process.cwd(), "post");
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts.map((fileName) => {
@@ -45,7 +46,7 @@ const getPostMetadata = (): PostMetadata[] => {
 };
 
 const getTagsMetadata = (): TagsMetadata[] => {
-  const folder = "tags/";
+  const folder = path.join(process.cwd(), "tags");
   const files = fs.readdirSync(folder);
   const markdownPosts = files.filter((file) => file.endsWith(".md"));
   const posts = markdownPosts.map((fileName) => {
@@ -95,6 +96,7 @@ export default function Blog(props: any) {
   }
 
   const postPreviews = postMetadata.slice(start, end).map((post, index) => (
+    // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
       <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
         <span className="font-bold">
