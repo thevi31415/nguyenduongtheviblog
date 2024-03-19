@@ -70,22 +70,6 @@ const getTagsMetadata = (): TagsMetadata[] => {
 export default function Blog(props: any) {
   const postMetadata = getPostMetadata();
   const tagsMetadata = getTagsMetadata();
-  // const postPreviews = postMetadata.map((post) => (
-  //   // eslint-disable-next-line react/jsx-key
-
-  //   <div key={post.slug}>
-  //     <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
-  //       <span className="font-bold gradient-text">
-  //         {" "}
-  //         <Link href={`/posts/${post.slug}`}>{post.title}</Link>
-  //       </span>
-  //       <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
-  //       <div className="mt-auto">
-  //         <time className="text-sm text-slate-400">🕖 {post.date}</time>
-  //       </div>
-  //     </div>
-  //   </div>
-  // ));
   const slug = "1";
   const start = (parseInt(slug) - 1) * 18;
   const end = parseInt(slug) * 18;
@@ -179,21 +163,6 @@ export default function Blog(props: any) {
           {postPreviews}
         </div>{" "}
         <div className="flex justify-center space-x-4 mb-8">
-          {/* <a
-            href={`/blog/`}
-            className="flex items-center text-gray-600 hover:text-blue-500 transition-colors duration-300"
-          >
-            <span>👈</span>
-            <span>Trang trước</span>
-          </a>
-          <a
-            href={`/blog/`}
-            className="flex items-center text-gray-600 hover:text-gray-800 transition-colors duration-300"
-          >
-            <span>Trang sau</span>
-            <span>👉</span>
-          </a> */}
-
           <Link
             className="flex gap-x-4 md:gap-x-6 items-center w-full  md:w-fit md:max-w-md px-4 md:px-5 py-2 border-2 border-transparent text-base leading-base text-link dark:text-link-dark rounded-lg group focus:text-link dark:focus:text-link-dark focus:bg-highlight focus:border-link dark:focus:bg-highlight-dark dark:focus:border-link-dark focus:border-opacity-100 focus:border-2 focus:ring-1 focus:ring-offset-4 focus:ring-blue-40 active:ring-0 active:ring-offset-0 hover:bg-blue-300 hover:text-white"
             href={`/blog/`}
