@@ -10,18 +10,7 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { Metadata } from "next";
 import { FacebookShare } from "react-share-kit";
-import {
-  FacebookShareButton,
-  FacebookIcon,
-  PinterestShareButton,
-  PinterestIcon,
-  RedditShareButton,
-  RedditIcon,
-  WhatsappShareButton,
-  WhatsappIcon,
-  LinkedinShareButton,
-  LinkedinIcon,
-} from "next-share";
+
 import Link from "next/link";
 export const metadata: Metadata = {
   title: "The Vi Blog",
