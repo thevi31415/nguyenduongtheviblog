@@ -136,7 +136,7 @@ const Tags = (props: any) => {
       postMetadata.map((post) => (
         // eslint-disable-next-line react/jsx-key
         <div key={post.slug}>
-          <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
+          <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
             <span className="font-bold gradient-text">
               {" "}
               <Link href={`/posts/${post.slug}`}>{post.title}</Link>
@@ -160,7 +160,7 @@ const Tags = (props: any) => {
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           # {slug}
         </h4>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
           {postPreviews ? (
             postPreviews
           ) : (
