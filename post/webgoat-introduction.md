@@ -1,5 +1,5 @@
 ---
-title: "1. Introduction - Webgoat"
+title: "Introduction - Webgoat"
 tag: "webgoat"
 subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần Introduction"
 date: "18-3-2024"
