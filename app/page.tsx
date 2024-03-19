@@ -39,7 +39,7 @@ export default async function Home() {
   const postPreviews = postMetadata.slice(0, 6).map((post, index) => (
     // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
-      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
+      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
         <span className="font-bold">
           {index === 0 && <h1 className="text-2xl">🌟</h1>}
           <Link href={`/posts/${post.slug}`} className="gradient-text">
@@ -82,7 +82,7 @@ export default async function Home() {
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           🔥Newest
         </h4>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
           {postPreviews}
         </div>{" "}
       </div>
