@@ -39,13 +39,9 @@ const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
 
-  const metadata: Metadata = {
-    title: post.data.title,
-    description: "Your default description here", // Update description if needed
-  };
-
   return (
     <div>
+      <div className={Styles.progressBar}></div>
       <div className="my-3 text-left gradient-text ">
         <h1 className="text-4xl text-slate-600 font-bold ">
           {post.data.title}

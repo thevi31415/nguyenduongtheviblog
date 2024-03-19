@@ -11,6 +11,17 @@ export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
+const getPaginationContent = (slug: string) => {
+  if (slug.trim() === "") {
+    slug = "1"; // Nếu rỗng, gán bằng "1"
+  }
+  const folder = "pagination/";
+  const file = `${folder}${slug}.md`;
+  const content = fs.readFileSync(file, "utf8");
+  const matterResult = matter(content);
+  return matterResult;
+};
+
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "post";
   const files = fs.readdirSync(folder);
@@ -33,6 +44,7 @@ const getPostMetadata = (): PostMetadata[] => {
     return dateB.getTime() - dateA.getTime();
   });
 };
+
 const getTagsMetadata = (): TagsMetadata[] => {
   const folder = "tags/";
   const files = fs.readdirSync(folder);
@@ -54,21 +66,48 @@ const getTagsMetadata = (): TagsMetadata[] => {
     return dateB.getTime() - dateA.getTime();
   });
 };
-export default function Blog() {
+
+export default function Blog(props: any) {
   const postMetadata = getPostMetadata();
   const tagsMetadata = getTagsMetadata();
-  const postPreviews = postMetadata.map((post) => (
-    // eslint-disable-next-line react/jsx-key
+  // const postPreviews = postMetadata.map((post) => (
+  //   // eslint-disable-next-line react/jsx-key
 
+  //   <div key={post.slug}>
+  //     <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
+  //       <span className="font-bold gradient-text">
+  //         {" "}
+  //         <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+  //       </span>
+  //       <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
+  //       <div className="mt-auto">
+  //         <time className="text-sm text-slate-400">🕖 {post.date}</time>
+  //       </div>
+  //     </div>
+  //   </div>
+  // ));
+  const slug = props.params.slug;
+  const start = (parseInt(slug) - 1) * 10;
+  const end = parseInt(slug) * 10;
+  let previousSlug = String(parseInt(slug) - 1);
+  const pg = getPaginationContent(slug);
+  // Nếu kết quả sau khi trừ là 0, gán lại giá trị là 1
+  if (previousSlug === "0") {
+    previousSlug = "1";
+  }
+
+  const postPreviews = postMetadata.slice(start, end).map((post, index) => (
     <div key={post.slug}>
-      <div className="flex flex-col w-full border  hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
-        <span className="font-bold gradient-text">
-          {" "}
-          <Link href={`/posts/${post.slug}`}>{post.title}</Link>
+      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
+        <span className="font-bold">
+          {index === 0 && <h1 className="text-2xl">🌟</h1>}
+          <Link href={`/posts/${post.slug}`} className="gradient-text">
+            {post.title}
+          </Link>
         </span>
         <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
         <div className="mt-auto">
-          <time className="text-sm text-slate-400">🕖 {post.date}</time>
+          <time className="text-sm text-slate-400">🕖{post.date}</time>
         </div>
       </div>
     </div>
@@ -137,9 +176,10 @@ export default function Blog() {
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
           📝All
         </h4>
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
           {postPreviews}
         </div>{" "}
+        <Link href={`/blog/${previousSlug}`}>Trang trước</Link>
       </div>
     </div>
   );

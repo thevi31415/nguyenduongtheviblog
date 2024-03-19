@@ -36,25 +36,6 @@ const getPostMetadata = (): PostMetadata[] => {
 
 export default async function Home() {
   const postMetadata = getPostMetadata();
-
-  // const postPreviews = postMetadata.slice(0, 6).map((post) => (
-  //   // eslint-disable-next-line react/jsx-key
-  //   <div key={post.slug}>
-  //     <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-4 hover:shadow-sm">
-  //       <span className="font-bold ">
-  //         {" "}
-  //         <h1 className="text-2xl">🌟</h1>
-  //         <Link href={`/posts/${post.slug}`} className="gradient-text">
-  //           {post.title}
-  //         </Link>
-  //       </span>
-  //       <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
-  //       <div className="mt-auto">
-  //         <time className="text-sm text-slate-400">🕖{post.date}</time>
-  //       </div>
-  //     </div>
-  //   </div>
-  // ));
   const postPreviews = postMetadata.slice(0, 6).map((post, index) => (
     // eslint-disable-next-line react/jsx-key
     <div key={post.slug}>
@@ -74,12 +55,6 @@ export default async function Home() {
   ));
   return (
     <div>
-      {" "}
-      {/* <div className="flex items-center justify-center">
-        <div className="mb-4 text-black-700 dark:text-gray-100 justify-center">
-          Hi! Im Nguyen Duong The Vi 😍🖐 !
-        </div>
-      </div> */}
       <div className="mb-6 mt-5 flex flex-col-reverse justify-between items-start sm:flex-row p-4 rounded-lg border-2 border-blue-300">
         <div className="flex flex-col pr-8">
           <h1 className="font-bold text-2xl md:text-2xl -ml-0.5 mb-2 text-black ">
