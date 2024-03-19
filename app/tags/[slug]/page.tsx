@@ -74,6 +74,30 @@ export const metadata: Metadata = {
 //     return 0;
 //   });
 // };
+const getPostById = (postId: string): PostMetadata | null => {
+  const folder = path.join(process.cwd(), "post");
+  const files = fs.readdirSync(folder);
+  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+
+  for (const fileName of markdownPosts) {
+    const fileContents = fs.readFileSync(path.join(folder, fileName), "utf8");
+    const matterResult = matter(fileContents);
+    const id = matterResult.data.id;
+
+    if (id === postId) {
+      return {
+        title: matterResult.data.title,
+        tag: matterResult.data.tag || [],
+        date: matterResult.data.date,
+        subtitle: matterResult.data.subtitle,
+        slug: fileName.replace(".md", ""),
+        id: matterResult.data.id,
+      };
+    }
+  }
+
+  return null; // Trả về null nếu không tìm thấy bài viết có id tương ứng
+};
 const getPostMetadata = (tagSlug: string): PostMetadata[] => {
   const folder = path.join(process.cwd(), "post");
   const files = fs.readdirSync(folder);
@@ -98,7 +122,7 @@ const getPostMetadata = (tagSlug: string): PostMetadata[] => {
     .filter((post): post is PostMetadata => post !== null); // Lọc ra các bài viết không null
   return posts.sort((a, b) => {
     if (a && b) {
-      return parseInt(a.id) - parseInt(b.id); // Sắp xếp theo ID
+      return parseInt(b.id) - parseInt(a.id); // Sắp xếp theo ID
     }
     return 0;
   });
@@ -106,7 +130,7 @@ const getPostMetadata = (tagSlug: string): PostMetadata[] => {
 const Tags = (props: any) => {
   const slug = props.params.slug;
   const postMetadata = getPostMetadata(slug);
-
+  const post = getPostById("");
   const postPreviews =
     postMetadata.length > 0 ? (
       postMetadata.map((post) => (

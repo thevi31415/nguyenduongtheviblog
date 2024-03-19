@@ -34,37 +34,11 @@ const getPostContent = (slug: string) => {
   const matterResult = matter(content);
   return matterResult;
 };
-const getPostMetadata = (): PostMetadata[] => {
-  const folder = "post/";
-  const files = fs.readdirSync(folder);
-  const markdownPosts = files.filter((file) => file.endsWith(".md"));
-
-  // Get gray-matter data from each file.
-  const posts = markdownPosts.map((fileName) => {
-    const fileContents = fs.readFileSync(`post/${fileName}`, "utf8");
-    const matterResult = matter(fileContents);
-    return {
-      title: matterResult.data.title,
-      tag: matterResult.data.tag,
-      date: matterResult.data.date,
-      subtitle: matterResult.data.subtitle,
-      id: matterResult.data.id,
-      slug: fileName.replace(".md", ""),
-    };
-  });
-
-  return posts;
-};
-export const generateStaticParams = async () => {
-  const posts = getPostMetadata();
-  return posts.map((post) => ({
-    slug: post.slug,
-  }));
-};
 
 const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
+
   const metadata: Metadata = {
     title: post.data.title,
     description: "Your default description here", // Update description if needed
