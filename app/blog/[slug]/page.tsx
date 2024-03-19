@@ -3,7 +3,6 @@ import Link from "next/link";
 import fs from "fs";
 import matter from "gray-matter";
 import { PostMetadata } from "@/components/PostMetadata";
-import { useEffect, useState } from "react";
 import { Metadata } from "next";
 import { TagsMetadata } from "@/components/TagsMatadata";
 ("@/components/PostMetadata");
@@ -11,16 +10,16 @@ export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
-const getPaginationContent = (slug: string) => {
-  if (slug.trim() === "") {
-    slug = "1"; // Nếu rỗng, gán bằng "1"
-  }
-  const folder = "pagination/";
-  const file = `${folder}${slug}.md`;
-  const content = fs.readFileSync(file, "utf8");
-  const matterResult = matter(content);
-  return matterResult;
-};
+// const getPaginationContent = (slug: string) => {
+//   if (slug.trim() === "") {
+//     slug = "1"; // Nếu rỗng, gán bằng "1"
+//   }
+//   const folder = "pagination/";
+//   const file = `${folder}${slug}.md`;
+//   const content = fs.readFileSync(file, "utf8");
+//   const matterResult = matter(content);
+//   return matterResult;
+// };
 
 const getPostMetadata = (): PostMetadata[] => {
   const folder = "post";
@@ -90,8 +89,7 @@ export default function Blog(props: any) {
   const start = (parseInt(slug) - 1) * 10;
   const end = parseInt(slug) * 10;
   let previousSlug = String(parseInt(slug) - 1);
-  const pg = getPaginationContent(slug);
-  // Nếu kết quả sau khi trừ là 0, gán lại giá trị là 1
+
   if (previousSlug === "0") {
     previousSlug = "1";
   }
