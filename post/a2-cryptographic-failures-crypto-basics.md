@@ -20,16 +20,16 @@ id: "9"
 - Base64 đặc biệt phổ biến trên World Wide Web, trong đó các công dụng của nó bao gồm khả năng đính các tệp hình ảnh hoặc các nội dung nhị phân khác vào bên trong các nội dung văn bản như tệp HTML và CSS3. Base64 cũng được sử dụng rộng rãi để gửi các tệp đính kèm email3.
 
 - Chúng ta Copy code đề bài cho: `bXl1c2VyOm15cGFzc3dvcmQ=`, và dán vào trang https://base64.guru/converter/decode để giải mã nó ta sẽ thấy được username và password:
-  ![alt](/images/webgoat/H17.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926572/WebGoat/H17_ckadle.png)
 - Chúng ta nhập username: `theviblog` và password: `passw0rd` vừa mới tìm được là xong:
-  ![alt](/images/webgoat/H18.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926590/WebGoat/H18_syhwdc.png)
 
 ## 2. Other Encoding
 
 - Copy code đề bài cho là: `{xor}Oz4rPj0+LDovPiwsKDAtOw==`. Dán vào trang https://strelitzia.net/wasXORdecoder/wasXORdecoder.html để giải mã nó, ta sẽ thấy được password.
-  ![alt](/images/webgoat/H19.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926591/WebGoat/H19_pct0nd.png)
 - Copy passoword vừa mời tìm được nhấn `post the answer` là xong:
-  ![alt](/images/webgoat/H20.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926593/WebGoat/H20_lnumw7.png)
 
 ## 3. Plain Hashing
 
@@ -40,23 +40,23 @@ id: "9"
 - Các hàm băm truyền thống cũng các hàm băm mật mã hóa đều mang tính tất định. Tính tất định nghĩa là, miễn là đầu vào không đổi, thì thuật toán băm luôn đưa ra cùng một đầu ra (còn gọi là đại diện hoặc băm).
 
 - Lần lượt copy 2 mã để cho dán vào trang: https://crackstation.net/ để xem nó là loại mã gì:
-  ![alt](/images/webgoat/H21.png)
-  ![alt](/images/webgoat/H22.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926595/WebGoat/H21_aol56n.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926597/WebGoat/H22_s8qpsv.png)
   Ta có thể thấy được mã thứ nhất là `MD5` và result là `admin`, mã thứ hai là `SHA256` result là `123456`.
 - Copy 2 kết quả vừa tìm được vào và nhấn post the answer là xong:
-  ![alt](/images/webgoat/H23.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926598/WebGoat/H23_x23gvx.png)
 
 ## 4. Signatures
 
 - Chữ ký là một giá trị băm (hash) có thể được sử dụng để kiểm tra tính hợp lệ của một số dữ liệu. Chữ ký có thể được cung cấp riêng biệt so với dữ liệu mà nó xác thực, hoặc trong trường hợp của CMS hoặc SOAP có thể được bao gồm trong cùng một tệp. (Nơi một số phần của tệp đó chứa dữ liệu và một số phần chứa chữ ký).
 
 - Việc ký kết được sử dụng khi tính toàn vẹn quan trọng. Nó được dùng như một bảo đảm rằng dữ liệu được gửi từ Bên-A đến Bên-B không bị thay đổi. Vì vậy, Bên-A ký kết dữ liệu bằng cách tính giá trị băm của dữ liệu và mã hóa giá trị băm đó bằng một khóa riêng không đối xứng. Bên-B sau đó có thể xác minh dữ liệu bằng cách tính giá trị băm của dữ liệu và giải mã chữ ký để so sánh xem hai giá trị băm có giống nhau không.
-  ![alt](/images/webgoat/H24.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926600/WebGoat/H24_vmbdof.png)
 - Đề bài cho một mã private RSA, yêu cầu dùng OpenSSL để tìm ra modulus và public key
 - Tạo một file tên là `privatekey.pem` chứa đoạn mã đề bài cho:
-  ![alt](/images/webgoat/H25.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926602/WebGoat/H25_xvxreq.png)
 - Vào trang: https://www.cryptool.org/en/cto/openssl để upload file `privatekey.pem` lên:
-  ![alt](/images/webgoat/H26.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926604/WebGoat/H26_butmkt.png)
 - Gõ lệnh:
 
   ```json
@@ -64,7 +64,7 @@ id: "9"
   ```
 
 Để có thể lấy file`publickey.pem`
-![alt](/images/webgoat/H27.png)
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926606/WebGoat/H27_kkuvzx.png)
 
 - Gõ lệnh:
 
@@ -73,11 +73,11 @@ openssl rsa -pubin -in publickey.pem -text -noout -modulus
 ```
 
 Để trích xuất modulus từ `publickey.pem`
-![alt](/images/webgoat/H28.png)
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926608/WebGoat/H28_tcnibm.png)
 
 - Tiến hành lưu modulus vừa tìm được vào file modulus và upload lên OpenSSL
-  ![alt](/images/webgoat/H29.png)
-  ![alt](/images/webgoat/H30.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926610/WebGoat/H29_q6b9wf.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926612/WebGoat/H30_focgpi.png)
 - Gõ lệnh:
 
   ```json
@@ -85,7 +85,7 @@ openssl rsa -pubin -in publickey.pem -text -noout -modulus
   ```
 
 Để tạo chữ ký với mã băm SHA-266 tuwg modulus và privatekey. Lưu vào file `sign.sha256`
-![alt](/images/webgoat/H31.png)
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926614/WebGoat/H31_ap9uvz.png)
 
 - Gõ lệnh:
 
@@ -94,7 +94,7 @@ openssl rsa -pubin -in publickey.pem -text -noout -modulus
   ```
 
 Để mã hóa `sign.sha256` dưới dạng Base64 và lưu vào file `sign.sha256.base64`:
-![alt](/images/webgoat/H32.png)
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926614/WebGoat/H31_ap9uvz.png)
 
 - Để lấy file gõ lệnh:
 
@@ -102,9 +102,9 @@ openssl rsa -pubin -in publickey.pem -text -noout -modulus
   cat sign.sha256.base64
   ```
 
-  ![alt](/images/webgoat/H33.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926618/WebGoat/H33_pbjbex.png)
 
 - Copy modulus và signature mới vừa tìm được và nhấn `post the answer` là xong:
-  ![alt](/images/webgoat/H34.png)
+  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1710926620/WebGoat/H34_igdoxl.png)
 
 Còn tiếp...
