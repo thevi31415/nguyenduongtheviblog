@@ -6,7 +6,7 @@ date: "18-3-2024"
 id: "1"
 ---
 
-![alt](/images/webgoat/H0.jpg)
+![alt](https://res.cloudinary.com/dy0tt2h2h/image/upload/v1710921097/WebGoat/H0_vnnzhy.jpg)
 
 ## 1. Webgoat
 
