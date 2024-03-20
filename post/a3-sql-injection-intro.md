@@ -1,7 +1,8 @@
 ---
 title: "(A3) SQL Injection - SQL Injection (Intro) - Webgoat"
 tag: "webgoat"
-subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần (A3) SQL Injection - SQL Injection (Intro)"
+subtitle: " 🐐
+  Bài viết này mình sẽ hướng dẫn các bạn làm phần (A3) SQL Injection - SQL Injection (Intro)"
 date: "20-3-2024"
 id: "10"
 ---

@@ -1,7 +1,7 @@
 ---
 title: "General - HTTP Basics - Webgoat"
 tag: "webgoat"
-subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần HTTP Basics - General"
+subtitle: " 🐐 Bài viết này mình sẽ hướng dẫn các bạn làm phần HTTP Basics - General"
 date: "18-3-2024"
 id: "2"
 ---

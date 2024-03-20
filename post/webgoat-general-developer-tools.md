@@ -1,7 +1,7 @@
 ---
 title: "General - Developer Tools - Webgoat"
 tag: "webgoat"
-subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần Developer Tools- General"
+subtitle: "🐐 Bài viết này mình sẽ hướng dẫn các bạn làm phần Developer Tools- General"
 date: "19-3-2024"
 id: "4"
 ---

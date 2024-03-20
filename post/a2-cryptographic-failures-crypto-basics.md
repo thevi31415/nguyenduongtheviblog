@@ -1,7 +1,7 @@
 ---
 title: "(A2) Cryptographic Failures - Crypto Basics - Webgoat"
 tag: "webgoat"
-subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần Crypto Basics - (A2) Cryptographic Failures"
+subtitle: "🐐 Bài viết này mình sẽ hướng dẫn các bạn làm phần Crypto Basics - (A2) Cryptographic Failures"
 date: "19-3-2024"
 id: "9"
 ---

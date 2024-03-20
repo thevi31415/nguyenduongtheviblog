@@ -1,7 +1,7 @@
 ---
 title: "General - HTTP Proxies - Webgoat"
 tag: "webgoat"
-subtitle: "Bài viết này mình sẽ hướng dẫn các bạn làm phần HTTP Proxies - General"
+subtitle: "🐐 Bài viết này mình sẽ hướng dẫn các bạn làm phần HTTP Proxies - General"
 date: "19-3-2024"
 id: "3"
 ---
