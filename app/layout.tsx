@@ -144,7 +144,7 @@ export default function RootLayout({
             @thevi31415
           </a>
         </p>
-        <span className="block text-sm text-center text-gray-500 dark:text-gray-400 mb-3">
+        <span className="block text-sm text-center text-gray-500 dark:text-gray-400 mb-1">
           © 2024 Nguyen Duong The Vi. All Rights Reserved.
         </span>
         {/* <a
@@ -154,7 +154,7 @@ export default function RootLayout({
         >
           Source code
         </a> */}
-        <ul className="flex justify-center mt-5 space-x-5">
+        <ul className="flex justify-center mt-2 mb-5 space-x-5">
           <li>
             <a
               href="#"
