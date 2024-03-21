@@ -35,7 +35,24 @@ export default function RootLayout({
         </div>
 
         <div>
-          <div id="menu">
+          <div className="md:hidden">
+            <div className="flex justify-center m-2">
+              <div
+                className="flex items-center p-1 px-3 border rounded-md cursor-pointer"
+                id="menu-button"
+              >
+                <Image
+                  className="w-5 h-5 mr-2"
+                  src="/menu.svg"
+                  alt="menu"
+                  width={50}
+                  height={50}
+                />
+                <div className="text-xl">Menu</div>
+              </div>
+            </div>
+          </div>
+          <div className="hidden md:block" id="menu">
             <ul className="justify-center text-lg font-medium md:flex">
               <li className="p-3 mx-2 ">
                 <p className="relative group">
@@ -59,7 +76,6 @@ export default function RootLayout({
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
                 </p>
               </li>
-
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
@@ -71,7 +87,6 @@ export default function RootLayout({
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
                 </p>
               </li>
-
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
@@ -83,7 +98,6 @@ export default function RootLayout({
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
                 </p>
               </li>
-
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
@@ -98,6 +112,21 @@ export default function RootLayout({
             </ul>
           </div>
         </div>
+
+        {/* <div>
+          <div id="menu">
+            <ul className="justify-center text-lg font-medium md:flex">
+            
+             
+
+             
+
+              
+
+             
+            </ul>
+          </div>
+        </div> */}
       </nav>
     </header>
   );
@@ -105,7 +134,7 @@ export default function RootLayout({
     <>
       <div className="text-center">
         <span className="block text-sm text-center text-gray-500 dark:text-gray-400 mb-3">
-          © 2024 Nguyen Duong The Vi . All Rights Reserved.
+          © 2024 Nguyen Duong The Vi. All Rights Reserved.
         </span>
         <a
           href="https://github.com/thevi31415/nguyenduongtheviblog"
@@ -228,6 +257,28 @@ export default function RootLayout({
       behavior: "smooth",
     });
   };
+  useEffect(() => {
+    const handleClick = () => {
+      const menubtn = document.getElementById("menu-button");
+      const menu = document.getElementById("menu");
+      if (menubtn && menu) {
+        menu.classList.toggle("hidden");
+      }
+    };
+
+    const menubtn = document.getElementById("menu-button");
+    if (menubtn) {
+      menubtn.addEventListener("click", handleClick);
+    }
+
+    // Cleanup function to remove the event listener
+    return () => {
+      if (menubtn) {
+        menubtn.removeEventListener("click", handleClick);
+      }
+    };
+  }, []); // empty dependency array means this effect runs once after mount
+
   return (
     <html>
       <head />
