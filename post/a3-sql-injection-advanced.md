@@ -7,6 +7,8 @@ date: "21-3-2024"
 id: "11"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 - **Blind SQL** injection là một phương pháp tấn công vào các ứng dụng web thông qua việc lợi dụng lỗ hổng bảo mật trong việc xử lý cơ sở dữ liệu SQL. Trong kiểu tấn công này, kẻ tấn công cố gắng chèn các câu lệnh SQL vào các trường dữ liệu đầu vào của ứng dụng web để thực hiện các hành động không được ủy quyền hoặc thu thập thông tin từ cơ sở dữ liệu.
 - Trong trường hợp blind SQL injection, kẻ tấn công không nhận được bất kỳ phản hồi trực tiếp nào từ hệ thống sau khi thực hiện một yêu cầu tấn công. Thay vào đó, họ phải dựa vào các biểu hiện gián tiếp từ hệ thống để suy luận thông tin về cơ sở dữ liệu.
 

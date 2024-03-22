@@ -6,6 +6,8 @@ date: "19-3-2024"
 id: "3"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 ## 1. Khái niệm
 
 A proxy is some forwarder application that connects your HTTP client to backend resources. HTTP clients can be browsers or applications like curl, SOAP UI, Postman, etc. Usually, these proxies are used for routing and getting internet access when there is no direct connection to the internet from the client itself. HTTP proxies are therefore also ideal when you are testing your application. You can always use the proxy log records to see what was actually sent from client to server. So you can check the request and response headers and the XML, JSON, or other payloads.

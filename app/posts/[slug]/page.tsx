@@ -120,7 +120,7 @@ const PostPage = (props: any) => {
             <header className="z-1 flex w-full flex-row self-start">
               <a
                 className="flex min-w-0 shrink items-center no-underline"
-                href="https://app.daily.dev/katrix"
+                href="#"
                 aria-expanded="false"
               >
                 <Image

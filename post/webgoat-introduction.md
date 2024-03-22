@@ -6,6 +6,8 @@ date: "18-3-2024"
 id: "1"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 ## 1. Webgoat
 
 Webgoat là một server application được cố tình lập trình có rất nhiều lỗi bảo mật. Thông qua đó, nó hướng dẫn người dùng thực hành những kỹ thuật tấn công ở trên để hiểu rõ hơn bản chất về lỗ hổng mà web applications thường gặp.

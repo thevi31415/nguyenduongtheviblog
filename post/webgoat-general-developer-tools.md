@@ -6,6 +6,8 @@ date: "19-3-2024"
 id: "4"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 ## 1. Try It! Using the console
 
 - Mở tab console và nhập `webgoat.customjs.phoneHome().` Ta sẽ thấy được: `phoneHome Response is 641942198`

@@ -7,6 +7,8 @@ date: "20-3-2024"
 id: "10"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 - **SQL Injection** là một kỹ thuật tấn công phổ biến trong lĩnh vực bảo mật web, mà kẻ tấn công sử dụng để thực hiện các thao tác không hợp lệ trên cơ sở dữ liệu của ứng dụng web thông qua việc chèn các câu lệnh SQL bất hợp pháp vào các trường nhập liệu của biểu mẫu web hoặc các tham số truy vấn URL.
 
 - Khi một ứng dụng web không kiểm tra và xử lý đầu vào của người dùng một cách an toàn, kẻ tấn công có thể chèn các câu lệnh SQL như SELECT, INSERT, UPDATE hoặc DELETE vào các trường nhập liệu. Khi thực thi, các câu lệnh này có thể gây ra các hậu quả nguy hiểm như thu thập thông tin nhạy cảm, sửa đổi hoặc xóa dữ liệu trong cơ sở dữ liệu, hoặc thậm chí kiểm soát hoàn toàn ứng dụng web.

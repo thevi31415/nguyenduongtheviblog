@@ -6,6 +6,8 @@ date: "18-3-2024"
 id: "2"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 ## 1. Khái niệm
 
 All HTTP transactions follow the same general format. Each client request and server response has three parts: the** request or response line, a header section and the entity body.**

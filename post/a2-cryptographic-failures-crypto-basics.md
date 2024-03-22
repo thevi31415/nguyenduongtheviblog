@@ -6,6 +6,8 @@ date: "19-3-2024"
 id: "9"
 ---
 
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711097747/WebGoat/WebGoat_ad2axz.png)
+
 - **Cryptographic Failures** là một thuật ngữ được sử dụng để mô tả các lỗi liên quan đến việc mã hóa thông tin nhạy cảm. Điều này thường xảy ra khi thông tin được mã hóa theo cách mà kẻ tấn công có thể giải mã được hoặc cách thức giải mã không đảm bảo an toàn bản rõ. Khi đó, những thông tin nhạy cảm có thể bị rò rỉ ra ngoài.
 
 - Các lỗi phổ biến có thể bao gồm việc sử dụng những giao thức truyền dữ liệu dạng rõ như HTTP, FTP, sử dụng những mã hóa đã cũ hoặc yếu, sử dụng những hàm băm không dùng nữa như md5, SHA1, khóa bí mật dễ đoán, và chuỗi mã hóa không được xác thực.
