@@ -12,10 +12,45 @@ import { Metadata } from "next";
 import { FacebookShare } from "react-share-kit";
 
 import Link from "next/link";
+import path from "path";
 export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
+const getPostMetadataIdTag = (
+  id1?: string,
+  tag1?: string,
+  id2?: string,
+  tag2?: string
+): PostMetadata[] => {
+  const folder = path.join(process.cwd(), "post");
+  const files = fs.readdirSync(folder);
+  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+  const matchedPosts: PostMetadata[] = [];
+
+  for (const fileName of markdownPosts) {
+    const fileContents = fs.readFileSync(path.join(folder, fileName), "utf8");
+    const matterResult = matter(fileContents);
+    const post: PostMetadata = {
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tag: matterResult.data.tag,
+      subtitle: matterResult.data.subtitle,
+      slug: fileName.replace(".md", ""),
+      id: matterResult.data.id,
+    };
+
+    if (
+      (post.id === id1 && post.tag === tag1) ||
+      (post.id === id2 && post.tag === tag2)
+    ) {
+      matchedPosts.push(post);
+    }
+  }
+
+  return matchedPosts;
+};
+
 const getPostContent = (slug: string) => {
   const folder = "post/";
   const file = `${folder}${slug}.md`;
@@ -27,7 +62,33 @@ const getPostContent = (slug: string) => {
 const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
+  const parsedNumber = parseInt(post.data.id);
 
+  // Tìm giá trị -1 và +1 và chuyển thành chuỗi
+  const prevNumber = (parsedNumber - 1).toString();
+  const nextNumber = (parsedNumber + 1).toString();
+  const postid = getPostMetadataIdTag(
+    prevNumber,
+    post.data.tag,
+    nextNumber,
+    post.data.tag
+  );
+  const postPreviews = postid.map((post, index) => (
+    // eslint-disable-next-line react/jsx-key
+    <div key={post.slug}>
+      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
+        <span className="font-bold">
+          <Link href={`/posts/${post.slug}`} className="gradient-text">
+            {post.title}
+          </Link>
+        </span>
+        <span className="text-sm text-slate-400 mt-2">{post.subtitle}</span>
+        <div className="mt-auto">
+          <time className="text-sm text-slate-400">🕖{post.date}</time>
+        </div>
+      </div>
+    </div>
+  ));
   return (
     <div>
       <div className={Styles.progressBar}></div>
@@ -125,7 +186,15 @@ const PostPage = (props: any) => {
           </p>
         </div>
       </div>
-
+      <div className="overflow-hidden">
+        {" "}
+        <h4 className="  text-xl font-medium text-gray-700 mb-2" id="new">
+          ✨Bài viết liên quan
+        </h4>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
+          {postPreviews}
+        </div>{" "}
+      </div>
       <Comments />
     </div>
   );
