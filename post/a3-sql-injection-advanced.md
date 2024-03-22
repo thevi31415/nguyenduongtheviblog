@@ -25,12 +25,15 @@ id: "11"
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014944/WebGoat/H46_ya1wem.png)
 
 - Ta code thể thấy được mật khẩu của Dave là `passW0rD`, dán mật khẩu vào ô Password và nhấn Check Password là xong:
-  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014945/WebGoat/H47_fcgm3n.png)
+
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014945/WebGoat/H47_fcgm3n.png)
 
 ## 2. Login
 
 - Ta đăng kí một tài khoản với Username là: `tom' AND substring(password, 1, 1)='t`, ta có thể suy ra trong password của Tom có một chữ là `t`:
-  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014944/WebGoat/H48_fs50vr.png)
+
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014944/WebGoat/H48_fs50vr.png)
+
 - Ta chạy chương trình Python sau gửi request để kiểm tra tất cả mật khẩu có thể có, thay đổi session_id tương ứng trên trình duyệt của bạn:
 
 ```python
@@ -82,4 +85,5 @@ if __name__ == "__main__":
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014944/WebGoat/H49_tax4nz.png)
 
 - Chạy sẽ hơn lâu, ta tìm được mật khẩu là `thisisasecretfortomonly`. Ta đăng nhập với Username là Tom và mật khẩu vừa tìm được:
-  ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014945/WebGoat/H50_rbviid.png)
+
+![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711014945/WebGoat/H50_rbviid.png)

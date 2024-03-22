@@ -10,13 +10,14 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 import { Metadata } from "next";
 import { FacebookShare } from "react-share-kit";
-
+import { format, parse } from "date-fns";
 import Link from "next/link";
 import path from "path";
 export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
+
 const getPostMetadataIdTag = (
   id1?: string,
   tag1?: string,
@@ -50,7 +51,10 @@ const getPostMetadataIdTag = (
 
   return matchedPosts;
 };
-
+const formatDate = (dateString: string) => {
+  const parsedDate = parse(dateString, "d-M-yyyy", new Date()); // Chuyển đổi chuỗi ngày thành đối tượng ngày
+  return format(parsedDate, "MMM d, yyyy"); // Định dạng lại ngày theo định dạng mong muốn
+};
 const getPostContent = (slug: string) => {
   const folder = "post/";
   const file = `${folder}${slug}.md`;
@@ -63,6 +67,8 @@ const PostPage = (props: any) => {
   const slug = props.params.slug;
   const post = getPostContent(slug);
   const parsedNumber = parseInt(post.data.id);
+  const originalDate = post.data.date;
+  const formattedDate = formatDate(originalDate);
 
   // Tìm giá trị -1 và +1 và chuyển thành chuỗi
   const prevNumber = (parsedNumber - 1).toString();
@@ -89,34 +95,75 @@ const PostPage = (props: any) => {
       </div>
     </div>
   ));
+
   return (
     <div>
       <div className={Styles.progressBar}></div>
+
       <div className="my-3 text-left gradient-text ">
         <h1 className="text-4xl text-slate-600 font-bold ">
           {post.data.title}
         </h1>
       </div>
+
       <div className="flex justify-between w-full  mt-5">
         <div>
-          <a className="flex items-center" href="/about">
-            <div className="relative w-12 h-12">
-              <div className="w-full h-full">
+          <div className="flex items-center">
+            <header className="z-1 flex w-full flex-row self-start">
+              <a
+                className="flex min-w-0 shrink items-center no-underline"
+                href="https://app.daily.dev/katrix"
+                aria-expanded="false"
+              >
                 <Image
-                  className="rounded-full  h-11 w-11  object-cover"
+                  className="object-cover w-11 h-11 rounded-full"
+                  loading="lazy"
+                  alt="profile"
                   src="/profile.jpg"
                   width={500}
                   height={500}
-                  alt="Picture of the author"
                 />
-              </div>
-            </div>
+              </a>
+              <div className="ml-3 flex min-w-0 flex-1 flex-col typo-callout">
+                <span className="flex flex-row">
+                  <a
+                    title="Nguyen Duong the Vi"
+                    className="commentAuthor w-fit font-bold text-theme-label-primary typo-callout flex min-w-0 shrink items-center no-underline"
+                    href="/about"
+                    aria-expanded="false"
+                  >
+                    <span className="max-w-full shrink truncate  text-sky-600">
+                      Nguyen Duong The Vi
+                    </span>
+                  </a>
+                  <span className="flex items-center font-bold capitalize typo-caption2 tablet:gap-0.5 tablet:typo-footnote ml-1 text-theme-label-primary">
+                    <Image
+                      alt="profile"
+                      src="/tick.svg"
+                      width={19}
+                      height={19}
+                    />
+                  </span>
+                </span>
 
-            <div className="flex flex-col ml-1  font-medium text-sky-600 hover:text-sky-600">
-              <p className="hover:underline">Nguyen Duong The Vi</p>
-              <p className=" text-sm text-slate-900">{post.data.date}</p>
-            </div>
-          </a>
+                <span className="items-center text-theme-label-quaternary flex flex-row">
+                  <a
+                    className="flex min-w-0 shrink items-center no-underline"
+                    href="https://github.com/thevi31415"
+                  >
+                    <span
+                      title="@thevi31415"
+                      className="max-w-full shrink truncate"
+                    >
+                      @thevi31415
+                    </span>
+                  </a>
+                  <div className="mx-1 h-0.5 w-0.5 bg-theme-label-quaternary"></div>
+                  <time className="typo-callout">{formattedDate}</time>
+                </span>
+              </div>
+            </header>
+          </div>
         </div>
         <div className="flex justify-center items-center">
           <a target="_blank" aria-label="Link to LinkedIn page" href="#">
@@ -165,15 +212,16 @@ const PostPage = (props: any) => {
           </a>
         </div>
       </div>
-      <div></div>
-      <div className=" bg-white rounded-lg">
+
+      <div className=" bg-white rounded-lg ">
         <div className="flex gap-2 flex-wrap p-4">
           <Link title="all" href={`/tags/${post.data.tag}`}>
-            <span className="bg-gray-100 rounded-full px-3 py-1 text-xl font-semibold text-gray-600">
-              # {post.data.tag}
+            <span className="w-fit cursor-default flex-row items-center gap-1.5 rounded-full text-center  opacity-100 transition-opacity duration-200 ease-in-out hover:opacity-80 border border-zinc-100 dark:border-zinc-800 inline-flex min-w-[30px] px-3 py-1 text-sm bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-200 text-xl font-semibold">
+              #{post.data.tag}
             </span>
           </Link>
         </div>
+
         <article className="flex items-start justify-left prose max-w-none max-w-full  ">
           <div className={Styles.markdownContainer}>
             <Markdown className={Styles.markdown}>{post.content}</Markdown>
@@ -186,6 +234,7 @@ const PostPage = (props: any) => {
           </p>
         </div>
       </div>
+
       <div className="overflow-hidden">
         {" "}
         <h4 className="  text-xl font-medium text-gray-700 mb-2" id="new">
