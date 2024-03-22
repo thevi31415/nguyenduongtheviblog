@@ -5,6 +5,7 @@ import Image from "next/image";
 import Giscus from "@giscus/react";
 import Styles from "./style.module.css";
 import Comments from "../../components/comments";
+import FB from "../../components/ButtonFacebook";
 import { PostMetadata } from "@/components/PostMetadata";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
@@ -69,6 +70,13 @@ const PostPage = (props: any) => {
   const parsedNumber = parseInt(post.data.id);
   const originalDate = post.data.date;
   const formattedDate = formatDate(originalDate);
+  const handleShare = () => {
+    const currentUrl = window.location.href;
+    const facebookShareUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(
+      currentUrl
+    )}`;
+    window.open(facebookShareUrl, "_blank");
+  };
 
   // Tìm giá trị -1 và +1 và chuyển thành chuỗi
   const prevNumber = (parsedNumber - 1).toString();
@@ -106,7 +114,7 @@ const PostPage = (props: any) => {
         </h1>
       </div>
 
-      <div className="flex justify-between w-full  mt-5">
+      <div className="flex pb-4 justify-between w-full  mt-5 border-b border-borderColor">
         <div>
           <div className="flex items-center">
             <header className="z-1 flex w-full flex-row self-start">
@@ -166,7 +174,7 @@ const PostPage = (props: any) => {
           </div>
         </div>
         <div className="flex justify-center items-center">
-          <a target="_blank" aria-label="Link to LinkedIn page" href="#">
+          {/* <a target="_blank" aria-label="Link to LinkedIn page" href="#">
             <div className="w-12 h-12 flex items-center justify-center">
               <svg
                 className="w-7 h-7 text-gray-600 hover:text-[#0072b1] dark:text-gray-400 dark:hover:text-[#0072b1] fill-current hover:scale-[1.05]"
@@ -209,7 +217,153 @@ const PostPage = (props: any) => {
                 <path d="M15,3C8.373,3,3,8.373,3,15c0,5.623,3.872,10.328,9.092,11.63C12.036,26.468,12,26.28,12,26.047v-2.051 c-0.487,0-1.303,0-1.508,0c-0.821,0-1.551-0.353-1.905-1.009c-0.393-0.729-0.461-1.844-1.435-2.526 c-0.289-0.227-0.069-0.486,0.264-0.451c0.615,0.174,1.125,0.596,1.605,1.222c0.478,0.627,0.703,0.769,1.596,0.769 c0.433,0,1.081-0.025,1.691-0.121c0.328-0.833,0.895-1.6,1.588-1.962c-3.996-0.411-5.903-2.399-5.903-5.098 c0-1.162,0.495-2.286,1.336-3.233C9.053,10.647,8.706,8.73,9.435,8c1.798,0,2.885,1.166,3.146,1.481C13.477,9.174,14.461,9,15.495,9 c1.036,0,2.024,0.174,2.922,0.483C18.675,9.17,19.763,8,21.565,8c0.732,0.731,0.381,2.656,0.102,3.594 c0.836,0.945,1.328,2.066,1.328,3.226c0,2.697-1.904,4.684-5.894,5.097C18.199,20.49,19,22.1,19,23.313v2.734 c0,0.104-0.023,0.179-0.035,0.268C23.641,24.676,27,20.236,27,15C27,8.373,21.627,3,15,3z"></path>
               </svg>
             </div>
-          </a>
+          </a> */}
+          <div className="flex gap-x-3">
+            <button
+              aria-label="facebook"
+              className="react-share__ShareButton"
+              aria-expanded="false"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                padding: "0px",
+                font: "inherit",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex"
+                style={{ backgroundColor: "rgb(59, 89, 151)" }}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 320 512"
+                  className="text-xl m-auto text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06h40.42V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z"></path>
+                </svg>
+              </div>
+            </button>
+
+            <button
+              aria-label="twitter"
+              className="react-share__ShareButton"
+              aria-expanded="false"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                padding: "0px",
+                font: "inherit",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex"
+                style={{ backgroundColor: "rgb(0, 171, 236)" }}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 512 512"
+                  className="text-xl m-auto text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="email"
+              className="react-share__ShareButton"
+              aria-expanded="false"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                padding: "0px",
+                font: "inherit",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex"
+                style={{ backgroundColor: "rgb(255, 104, 28)" }}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 24 24"
+                  className="text-xl m-auto text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path fill="none" d="M0 0h24v24H0V0z"></path>
+                  <path d="M22 6c0-1.1-.9-2-2-2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6zm-2 0l-8 5-8-5h16zm0 12H4V8l8 5 8-5v10z"></path>
+                </svg>
+              </div>
+            </button>
+            <button
+              aria-label="linkedin"
+              className="react-share__ShareButton"
+              aria-expanded="false"
+              style={{
+                backgroundColor: "transparent",
+                border: "none",
+                padding: "0px",
+                font: "inherit",
+                color: "inherit",
+                cursor: "pointer",
+              }}
+            >
+              <div
+                className="w-8 h-8 rounded-full flex"
+                style={{ backgroundColor: "rgb(0, 123, 181)" }}
+              >
+                <svg
+                  stroke="currentColor"
+                  fill="currentColor"
+                  strokeWidth="0"
+                  viewBox="0 0 448 512"
+                  className="text-xl m-auto text-white"
+                  height="1em"
+                  width="1em"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path>
+                </svg>
+              </div>
+            </button>
+            <div
+              className="w-8 h-8 rounded-full flex cursor-pointer"
+              aria-expanded="false"
+              style={{ backgroundColor: "rgb(24, 24, 33)" }}
+            >
+              <svg
+                stroke="currentColor"
+                fill="currentColor"
+                strokeWidth="0"
+                viewBox="0 0 512 512"
+                className="text-xl m-auto text-white"
+                height="1em"
+                width="1em"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path d="M326.612 185.391c59.747 59.809 58.927 155.698.36 214.59-.11.12-.24.25-.36.37l-67.2 67.2c-59.27 59.27-155.699 59.262-214.96 0-59.27-59.26-59.27-155.7 0-214.96l37.106-37.106c9.84-9.84 26.786-3.3 27.294 10.606.648 17.722 3.826 35.527 9.69 52.721 1.986 5.822.567 12.262-3.783 16.612l-13.087 13.087c-28.026 28.026-28.905 73.66-1.155 101.96 28.024 28.579 74.086 28.749 102.325.51l67.2-67.19c28.191-28.191 28.073-73.757 0-101.83-3.701-3.694-7.429-6.564-10.341-8.569a16.037 16.037 0 0 1-6.947-12.606c-.396-10.567 3.348-21.456 11.698-29.806l21.054-21.055c5.521-5.521 14.182-6.199 20.584-1.731a152.482 152.482 0 0 1 20.522 17.197zM467.547 44.449c-59.261-59.262-155.69-59.27-214.96 0l-67.2 67.2c-.12.12-.25.25-.36.37-58.566 58.892-59.387 154.781.36 214.59a152.454 152.454 0 0 0 20.521 17.196c6.402 4.468 15.064 3.789 20.584-1.731l21.054-21.055c8.35-8.35 12.094-19.239 11.698-29.806a16.037 16.037 0 0 0-6.947-12.606c-2.912-2.005-6.64-4.875-10.341-8.569-28.073-28.073-28.191-73.639 0-101.83l67.2-67.19c28.239-28.239 74.3-28.069 102.325.51 27.75 28.3 26.872 73.934-1.155 101.96l-13.087 13.087c-4.35 4.35-5.769 10.79-3.783 16.612 5.864 17.194 9.042 34.999 9.69 52.721.509 13.906 17.454 20.446 27.294 10.606l37.106-37.106c59.271-59.259 59.271-155.699.001-214.959z"></path>
+              </svg>
+            </div>
+          </div>
         </div>
       </div>
 
