@@ -1,5 +1,5 @@
 ---
-title: "(A3) SQL Injection - SQL Injection (Advanced) - Webgoat"
+title: "(A3) Injection - SQL Injection (Advanced) - Webgoat"
 tag: "webgoat"
 subtitle: " 🐐
   Bài viết này mình sẽ hướng dẫn các bạn làm phần (A3) SQL Injection - SQL Injection (Advanced)"
