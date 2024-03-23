@@ -158,7 +158,7 @@ const Tags = (props: any) => {
     <div>
       <div className="overflow-hidden">
         <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
-          # {slug}
+          #{slug} ({postMetadata.length})
         </h4>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
           {postPreviews ? (
