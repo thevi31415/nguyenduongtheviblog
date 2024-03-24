@@ -1,0 +1,84 @@
+{
+    "quizzes": [
+        {
+            "id": 1,
+            "title": "Quiz về Toán học căn bản",
+            "description": "Bài kiểm tra này bao gồm các câu hỏi về các khái niệm cơ bản trong toán học.",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "2 + 2 bằng bao nhiêu?",
+                    "options": [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "answer": "4"
+                },
+                {
+                    "id": 2,
+                    "question": "10 - 5 bằng bao nhiêu?",
+                    "options": [
+                        "3",
+                        "4",
+                        "5",
+                        "6"
+                    ],
+                    "answer": "5"
+                },
+                {
+                    "id": 3,
+                    "question": "10 x 2 bằng bao nhiêu?",
+                    "options": [
+                        "15",
+                        "20",
+                        "25",
+                        "30"
+                    ],
+                    "answer": "20"
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "title": "Quiz về Lịch sử Thế giới",
+            "description": "Bài kiểm tra này bao gồm các câu hỏi về lịch sử thế giới.",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Ai là vị hoàng đế nổi tiếng của Đế chế La Mã?",
+                    "options": [
+                        "Julius Caesar",
+                        "Alexander the Great",
+                        "Napoleon Bonaparte",
+                        "Genghis Khan"
+                    ],
+                    "answer": "Julius Caesar"
+                },
+                {
+                    "id": 2,
+                    "question": "Năm nào Chiến tranh Thế giới I kết thúc?",
+                    "options": [
+                        "1918",
+                        "1919",
+                        "1920",
+                        "1921"
+                    ],
+                    "answer": "1918"
+                },
+                {
+                    "id": 3,
+                    "question": "Ai là người sáng lập ra Đế chế Ottoman?",
+                    "options": [
+                        "Suleiman the Magnificent",
+                        "Mehmed the Conqueror",
+                        "Osman I",
+                        "Murad I"
+                    ],
+                    "answer": "Osman I"
+                }
+            ]
+        }
+    ]
+}
