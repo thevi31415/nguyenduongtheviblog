@@ -1,12 +1,51 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import data from "../data.json";
+interface Quiz {
+  id: number;
+  title: string;
+  description: string;
+  questions: {
+    id: number;
+    question: string;
+    options: string[];
+    answer: string;
+  }[];
+}
 
+function shuffle<T>(array: T[]): T[] {
+  let currentIndex = array.length;
+  let temporaryValue: T;
+  let randomIndex: number;
+
+  // While there remain elements to shuffle...
+  while (0 !== currentIndex) {
+    // Pick a remaining element...
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    // And swap it with the current element.
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
+  }
+
+  return array;
+}
 export default function QuizPage(props: any) {
-  const initialAnswers: string[][] = new Array(data.quizzes.length).fill([]);
+  const initialAnswers = new Array(data.quizzes.length).fill([]);
   const [answers, setAnswers] = useState<string[][]>(initialAnswers);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
+  const [shuffledQuizzes, setShuffledQuizzes] = useState<Quiz[]>([]);
+
+  useEffect(() => {
+    const shuffledData = data.quizzes.map((quiz: Quiz) => ({
+      ...quiz,
+      questions: shuffle([...quiz.questions]),
+    }));
+    setShuffledQuizzes(shuffledData);
+  }, []);
   const slug = props.params.slug;
   const quizId = parseInt(slug, 10);
 
@@ -22,7 +61,7 @@ export default function QuizPage(props: any) {
 
   const calculateScore = () => {
     let newScore = 0;
-    data.quizzes[quizId - 1].questions.forEach((question, qIndex) => {
+    shuffledQuizzes[quizId - 1].questions.forEach((question, qIndex) => {
       if (question.answer === answers[quizId - 1][qIndex]) {
         newScore++;
       }
@@ -40,7 +79,7 @@ export default function QuizPage(props: any) {
     <div>
       {!showResult && (
         <>
-          {data.quizzes.map((quiz) => (
+          {shuffledQuizzes.map((quiz) => (
             <div key={quiz.id}>
               {quiz.id === quizId && (
                 <div>
@@ -51,8 +90,8 @@ export default function QuizPage(props: any) {
                       <div
                         className={`border ${
                           answers[quizId - 1][qIndex]
-                            ? "border-green-500"
-                            : "border-blue-500"
+                            ? "border-blue-500"
+                            : "border-gray-300"
                         } border-solid border-4 rounded-lg p-4`}
                       >
                         <p className="text-lg font-semibold mb-2">
