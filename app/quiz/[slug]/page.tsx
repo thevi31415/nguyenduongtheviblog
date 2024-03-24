@@ -1,13 +1,14 @@
 "use client";
 import { useState } from "react";
-import data from "./data.json";
+import data from "../data.json";
 
-export default function QuizPage() {
+export default function QuizPage(props: any) {
   const initialAnswers: string[][] = new Array(data.quizzes.length).fill([]);
   const [answers, setAnswers] = useState<string[][]>(initialAnswers);
   const [showResult, setShowResult] = useState(false);
   const [score, setScore] = useState(0);
-  const quizId = 1; // Gán id của quiz cần hiển thị
+  const slug = props.params.slug;
+  const quizId = parseInt(slug, 10);
 
   const handleAnswerChange = (
     quizIndex: number,
