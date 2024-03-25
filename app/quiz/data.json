@@ -1,82 +1,64 @@
 {
     "quizzes": [
         {
-            "id": "SDSG",
-            "title": "Quiz về Toán học căn bản",
-            "description": "Bài kiểm tra này bao gồm các câu hỏi về các khái niệm cơ bản trong toán học.",
+            "id": "qOyiyCBnxs",
+            "title": "OWASP TOP 10 - Injection QUIZ",
+            "description": "Test your knowledge on injection vulnerabilities with this OWASP TOP 10 quiz. From SQL injection to command injection, this quiz covers the most common types of injection attacks outlined by the Open Web Application Security Project (OWASP). Challenge yourself to identify the vulnerabilities, understand their impact, and learn how to prevent them. Dive into this quiz to sharpen your skills and fortify your defenses against injection attacks in web applications.",
             "questions": [
                 {
                     "id": 1,
-                    "question": "2 + 2 bằng bao nhiêu?",
+                    "question": "\"|/bin/ls -al\" is a payload for which injection attack?",
                     "options": [
-                        "3",
-                        "4",
-                        "5",
-                        "6"
+                        "SQL Injection",
+                        "OS Command Injection",
+                        "HTML Injection",
+                        "All of the above"
                     ],
-                    "answer": "4"
+                    "answer": "OS Command Injection"
                 },
                 {
                     "id": 2,
-                    "question": "10 - 5 bằng bao nhiêu?",
+                    "question": "LDAP stands for",
                     "options": [
-                        "3",
-                        "4",
-                        "5",
-                        "6"
+                        "Lightweight Directory Access Port",
+                        "Lightweight Dictionary Access Port",
+                        "Lightweight Directory Access Protocol",
+                        "Lightweight Dictionary Access Protocol"
                     ],
-                    "answer": "5"
+                    "answer": "Lightweight Directory Access Protocol"
                 },
                 {
                     "id": 3,
-                    "question": "10 x 2 bằng bao nhiêu?",
+                    "question": "Which of the following is most common intercepting tool?",
                     "options": [
-                        "15",
-                        "20",
-                        "25",
-                        "30"
+                        "Commix",
+                        "BeEF",
+                        "Burp Suite",
+                        "SQL Map"
                     ],
-                    "answer": "20"
-                }
-            ]
-        },
-        {
-            "id": "GFJGJF",
-            "title": "Quiz về Lịch sử Thế giới",
-            "description": "Bài kiểm tra này bao gồm các câu hỏi về lịch sử thế giới.",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "Ai là vị hoàng đế nổi tiếng của Đế chế La Mã?",
-                    "options": [
-                        "Julius Caesar",
-                        "Alexander the Great",
-                        "Napoleon Bonaparte",
-                        "Genghis Khan"
-                    ],
-                    "answer": "Julius Caesar"
+                    "answer": "Burp Suite"
                 },
                 {
-                    "id": 2,
-                    "question": "Năm nào Chiến tranh Thế giới I kết thúc?",
+                    "id": 4,
+                    "question": "Which of the following automated tools are used for SQLi attack",
                     "options": [
-                        "1918",
-                        "1919",
-                        "1920",
-                        "1921"
+                        "sqlmap",
+                        "commix",
+                        "Wireshark",
+                        "BeEF"
                     ],
-                    "answer": "1918"
+                    "answer": "sqlmap"
                 },
                 {
-                    "id": 3,
-                    "question": "Ai là người sáng lập ra Đế chế Ottoman?",
+                    "id": 5,
+                    "question": "Which of the following are SMTP Header:-",
                     "options": [
-                        "Suleiman the Magnificent",
-                        "Mehmed the Conqueror",
-                        "Osman I",
-                        "Murad I"
+                        "FROM",
+                        "TO",
+                        "CC",
+                        "All of the above"
                     ],
-                    "answer": "Osman I"
+                    "answer": "All of the above"
                 }
             ]
         }
