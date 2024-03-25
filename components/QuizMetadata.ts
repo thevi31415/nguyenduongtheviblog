@@ -1,4 +1,4 @@
-export interface PostMetadata {
+export interface QuizMetadata {
   IDT: string;
   title: string;
   tag: string;

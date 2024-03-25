@@ -1,7 +1,7 @@
 {
     "quizzes": [
         {
-            "id": 1,
+            "id": "SDSG",
             "title": "Quiz về Toán học căn bản",
             "description": "Bài kiểm tra này bao gồm các câu hỏi về các khái niệm cơ bản trong toán học.",
             "questions": [
@@ -41,7 +41,7 @@
             ]
         },
         {
-            "id": 2,
+            "id": "GFJGJF",
             "title": "Quiz về Lịch sử Thế giới",
             "description": "Bài kiểm tra này bao gồm các câu hỏi về lịch sử thế giới.",
             "questions": [
@@ -77,86 +77,6 @@
                         "Murad I"
                     ],
                     "answer": "Osman I"
-                },
-                {
-                    "id": 1,
-                    "question": "Ai là vị hoàng đế nổi tiếng của Đế chế La Mã?",
-                    "options": [
-                        "Julius Caesar",
-                        "Alexander the Great",
-                        "Napoleon Bonaparte",
-                        "Genghis Khan"
-                    ],
-                    "answer": "Julius Caesar"
-                },
-                {
-                    "id": 1,
-                    "question": "Ai là vị hoàng đế nổi tiếng của Đế chế La Mã?",
-                    "options": [
-                        "Julius Caesar",
-                        "Alexander the Great",
-                        "Napoleon Bonaparte",
-                        "Genghis Khan"
-                    ],
-                    "answer": "Julius Caesar"
-                },
-                {
-                    "id": 1,
-                    "question": "Ai là vị hoàng đế nổi tiếng của Đế chế La Mã?",
-                    "options": [
-                        "Julius Caesar",
-                        "Alexander the Great",
-                        "Napoleon Bonaparte",
-                        "Genghis Khan"
-                    ],
-                    "answer": "Julius Caesar"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "title": "Quiz về Bảo mật web",
-            "description": "Bài kiểm tra bảo mật web",
-            "questions": [
-                {
-                    "id": 1,
-                    "question": "Broken Authentication is caused due to",
-                    "options": [
-                        "Exposure of sensitive application/user details to unauthorized users",
-                        "improper implementation of authentication and session management",
-                        "older or poorly configured XML processors evaluate external entity references within XML documents",
-                        "application includes untrusted data in a new web page without proper validation or escaping"
-                    ],
-                    "answer": "improper implementation of authentication and session management"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "title": "Quiz về Bảo mật web",
-            "description": "Bài kiểm tra bảo mật web",
-            "questions": [
-                {
-                    "id": 2,
-                    "question": "Who is the winner of the 2015 Password Hashing Competition?",
-                    "options": [
-                        "Argon2",
-                        "BLAKE2",
-                        "nscrypt",
-                        "SHA-3"
-                    ],
-                    "answer": "Argon2"
-                },
-                {
-                    "id": 3,
-                    "question": "Which terms are correct for the peppering?",
-                    "options": [
-                        "The pepper should be stored in the database.",
-                        "The pepper should be shared between stored passwords.",
-                        "The pepper should be stored in the secrets vault.",
-                        "The pepper should be unique like a salt."
-                    ],
-                    "answer": "The pepper should be shared between stored passwords."
                 }
             ]
         }

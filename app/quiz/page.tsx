@@ -1,118 +1,113 @@
-"use client";
-import { useState } from "react";
-import data from "./data.json";
+import Image from "next/image";
+import Link from "next/link";
+import fs from "fs";
+import matter from "gray-matter";
+import { QuizMetadata } from "@/components/QuizMetadata";
+import { Metadata } from "next";
+import { TagsMetadata } from "@/components/TagsMatadata";
+import path from "path";
+("@/components/PostMetadata");
+export const metadata: Metadata = {
+  title: "The Vi Blog",
+  description: "This is my personal blog, sharing about my everyday life.",
+};
+// const getPaginationContent = (slug: string) => {
+//   if (slug.trim() === "") {
+//     slug = "1"; // Nếu rỗng, gán bằng "1"
+//   }
+//   const folder = "pagination/";
+//   const file = `${folder}${slug}.md`;
+//   const content = fs.readFileSync(file, "utf8");
+//   const matterResult = matter(content);
+//   return matterResult;
+// };
 
-export default function QuizPage() {
-  const initialAnswers: string[][] = new Array(data.quizzes.length).fill([]);
-  const [answers, setAnswers] = useState<string[][]>(initialAnswers);
-  const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
-  const quizId = 1; // Gán id của quiz cần hiển thị
+const getQuizMetadata = (): QuizMetadata[] => {
+  const folder = path.join(process.cwd(), "question");
+  const files = fs.readdirSync(folder);
+  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+  const posts = markdownPosts.map((fileName) => {
+    const fileContents = fs.readFileSync(`question/${fileName}`, "utf8");
+    const matterResult = matter(fileContents);
+    return {
+      IDT: matterResult.data.IDT,
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      tag: matterResult.data.tag,
+      subtitle: matterResult.data.subtitle,
+      slug: fileName.replace(".md", ""),
+      id: matterResult.data.id,
+    };
+  });
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.date.split("-").reverse().join("-"));
+    const dateB = new Date(b.date.split("-").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime();
+  });
+};
 
-  const handleAnswerChange = (
-    quizIndex: number,
-    answerIndex: number,
-    answer: string
-  ) => {
-    const newAnswers = [...answers];
-    newAnswers[quizIndex][answerIndex] = answer;
-    setAnswers(newAnswers);
-  };
+const getTagsMetadata = (): TagsMetadata[] => {
+  const folder = path.join(process.cwd(), "tags");
+  const files = fs.readdirSync(folder);
+  const markdownPosts = files.filter((file) => file.endsWith(".md"));
+  const posts = markdownPosts.map((fileName) => {
+    const fileContents = fs.readFileSync(`tags/${fileName}`, "utf8");
+    const matterResult = matter(fileContents);
+    return {
+      title: matterResult.data.title,
+      date: matterResult.data.date,
+      subtitle: matterResult.data.subtitle,
+      slug: fileName.replace(".md", ""),
+      id: matterResult.data.id,
+    };
+  });
+  return posts.sort((a, b) => {
+    const dateA = new Date(a.date.split("-").reverse().join("-"));
+    const dateB = new Date(b.date.split("-").reverse().join("-"));
+    return dateB.getTime() - dateA.getTime();
+  });
+};
 
-  const calculateScore = () => {
-    let newScore = 0;
-    data.quizzes[quizId - 1].questions.forEach((question, qIndex) => {
-      if (question.answer === answers[quizId - 1][qIndex]) {
-        newScore++;
-      }
-    });
-    return newScore;
-  };
+export default function Blog(props: any) {
+  const quizMetadata = getQuizMetadata();
+  const tagsMetadata = getTagsMetadata();
+  const slug = "1";
+  const start = (parseInt(slug) - 1) * 18;
+  const end = parseInt(slug) * 18;
+  let previousSlug = String(parseInt(slug) - 1);
+  let nextSlug = String(parseInt(slug) + 1);
+  if (previousSlug === "0") {
+    previousSlug = "1";
+  }
 
-  const handleSubmit = () => {
-    const newScore = calculateScore();
-    setScore(newScore);
-    setShowResult(true);
-  };
+  const postPreviews = quizMetadata.slice(start, end).map((quiz, index) => (
+    // eslint-disable-next-line react/jsx-key
+    <div key={quiz.IDT}>
+      <div className="flex flex-col w-full border hover:bg-slate-50 rounded p-4 mb-1 hover:shadow-sm">
+        <span className="font-bold">
+          ❓
+          <Link href={`/quiz/${quiz.IDT}`} className="gradient-text">
+            {quiz.title}
+          </Link>
+        </span>
+        <span className="text-sm text-slate-400 mt-2">{quiz.subtitle}</span>
+        <div className="mt-auto">
+          <time className="text-sm text-slate-400">🕖{quiz.date}</time>
+        </div>
+      </div>
+    </div>
+  ));
 
   return (
     <div>
-      {!showResult && (
-        <>
-          {data.quizzes.map((quiz) => (
-            <div key={quiz.id}>
-              {quiz.id === quizId && (
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">{quiz.title}</h2>
-                  <p className="text-gray-600 mb-6">{quiz.description}</p>
-                  {quiz.questions.map((question, qIndex) => (
-                    <div key={question.id} className="mb-6">
-                      <div
-                        className={`border ${
-                          answers[quizId - 1][qIndex]
-                            ? "border-green-500"
-                            : "border-blue-500"
-                        } border-solid border-4 rounded-lg p-4`}
-                      >
-                        <p className="text-lg font-semibold mb-2">
-                          <span className="text-lg font-bold text-blue-600">
-                            Câu {qIndex + 1}:{" "}
-                          </span>
-                          {question.question}
-                        </p>
-                        {question.options.map((option, optionIndex) => (
-                          <label
-                            key={option}
-                            className={`block mb-2 p-2 rounded-lg ${
-                              answers[quizId - 1][qIndex] === option
-                                ? "bg-blue-200"
-                                : "border border-blue-500 hover:border-blue-700 hover:bg-blue-100"
-                            } cursor-pointer`}
-                          >
-                            <input
-                              type="radio"
-                              name={`quiz-${quiz.id}-question-${qIndex}`}
-                              value={option}
-                              checked={answers[quizId - 1][qIndex] === option}
-                              onChange={() =>
-                                handleAnswerChange(quizId - 1, qIndex, option)
-                              }
-                              className="mr-2 cursor-pointer"
-                            />
-                            <span>{option}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
-            </div>
-          ))}
-          <button
-            onClick={handleSubmit}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-          >
-            Submit
-          </button>
-        </>
-      )}
-      {showResult && (
-        <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-md">
-            <h2 className="text-3xl font-bold text-center text-purple-600 mb-4">
-              Congratulations!
-            </h2>
-            <p className="text-lg text-gray-700 mb-8 text-center">
-              Your score for Quiz <span className="font-bold">{quizId}</span> is{" "}
-              <span className="font-bold text-purple-600">{score}</span>.
-            </p>
-            <button className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full w-full transition duration-300 ease-in-out transform hover:scale-105">
-              Start a New Quiz
-            </button>
-          </div>
-        </div>
-      )}
+      <div className="overflow-hidden">
+        <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
+          ✍🏻 Quiz
+        </h4>
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-2">
+          {postPreviews}
+        </div>{" "}
+      </div>
     </div>
   );
 }

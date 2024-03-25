@@ -1,156 +1,149 @@
 "use client";
-import { useEffect, useState } from "react";
-import data from "../data.json";
-interface Quiz {
-  id: number;
-  title: string;
-  description: string;
-  questions: {
-    id: number;
-    question: string;
-    options: string[];
-    answer: string;
-  }[];
+import { useState } from "react";
+import quizzesData from "../data.json";
+import Link from "next/link";
+
+interface Props {
+  quizId: string;
 }
 
-function shuffle<T>(array: T[]): T[] {
-  let currentIndex = array.length;
-  let temporaryValue: T;
-  let randomIndex: number;
+interface Answers {
+  [key: number]: string;
+}
 
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
+interface QuestionState {
+  id: number;
+  selectedOptionId: number | null;
+}
 
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
+export default function QuizPage(props: any) {
+  const [answers, setAnswers] = useState<Answers>({});
+  const [score, setScore] = useState(0);
+  const [showResult, setShowResult] = useState(false);
+  const [quizNotFound, setQuizNotFound] = useState(false);
+  const [questionStates, setQuestionStates] = useState<QuestionState[]>(
+    quizzesData.quizzes[0].questions.map((question) => ({
+      id: question.id,
+      selectedOptionId: null,
+    }))
+  );
+
+  const getQuizById = (quizId: string) => {
+    const quiz = quizzesData.quizzes.find((quiz) => quiz.id === quizId);
+    return quiz ? quiz : null;
+  };
+  const slug = props.params.slug;
+  const quiz = getQuizById(slug);
+
+  if (!quiz) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-green-500 animate-pulse">
+          Không tìm thấy Quiz nào !!!!
+        </h1>
+      </div>
+    );
   }
 
-  return array;
-}
-export default function QuizPage(props: any) {
-  const initialAnswers = new Array(data.quizzes.length).fill([]);
-  const [answers, setAnswers] = useState<string[][]>(initialAnswers);
-  const [showResult, setShowResult] = useState(false);
-  const [score, setScore] = useState(0);
-  const [shuffledQuizzes, setShuffledQuizzes] = useState<Quiz[]>([]);
-
-  useEffect(() => {
-    const shuffledData = data.quizzes.map((quiz: Quiz) => ({
-      ...quiz,
-      questions: shuffle([...quiz.questions]),
-    }));
-    setShuffledQuizzes(shuffledData);
-  }, []);
-  const slug = props.params.slug;
-  const quizId = parseInt(slug, 10);
-
-  const handleAnswerChange = (
-    quizIndex: number,
-    answerIndex: number,
-    answer: string
-  ) => {
-    const newAnswers = [...answers];
-    newAnswers[quizIndex][answerIndex] = answer;
-    setAnswers(newAnswers);
-  };
-
-  const calculateScore = () => {
+  const handleSubmit = () => {
     let newScore = 0;
-    shuffledQuizzes[quizId - 1].questions.forEach((question, qIndex) => {
-      if (question.answer === answers[quizId - 1][qIndex]) {
+    quiz.questions.forEach((question) => {
+      if (answers[question.id] === question.answer) {
         newScore++;
       }
     });
-    return newScore;
-  };
-
-  const handleSubmit = () => {
-    const newScore = calculateScore();
     setScore(newScore);
     setShowResult(true);
   };
 
+  const handleChange = (questionId: number, selectedOption: string) => {
+    setAnswers({ ...answers, [questionId]: selectedOption });
+
+    const newQuestionStates = questionStates.map((questionState) =>
+      questionState.id === questionId
+        ? { ...questionState, selectedOptionId: questionId }
+        : questionState
+    );
+
+    setQuestionStates(newQuestionStates);
+  };
+
   return (
-    <div>
-      {!showResult && (
-        <>
-          {shuffledQuizzes.map((quiz) => (
-            <div key={quiz.id}>
-              {quiz.id === quizId && (
-                <div>
-                  <h2 className="text-2xl font-bold mb-4">{quiz.title}</h2>
-                  <p className="text-gray-600 mb-6">{quiz.description}</p>
-                  {quiz.questions.map((question, qIndex) => (
-                    <div key={question.id} className="mb-6">
-                      <div
-                        className={`border ${
-                          answers[quizId - 1][qIndex]
-                            ? "border-blue-500"
-                            : "border-gray-300"
-                        } border-solid border-4 rounded-lg p-4`}
-                      >
-                        <p className="text-lg font-semibold mb-2">
-                          <span className="text-lg font-bold text-blue-600">
-                            Câu {qIndex + 1}:{" "}
-                          </span>
-                          {question.question}
-                        </p>
-                        {question.options.map((option, optionIndex) => (
-                          <label
-                            key={option}
-                            className={`block mb-2 p-2 rounded-lg ${
-                              answers[quizId - 1][qIndex] === option
-                                ? "bg-blue-200"
-                                : "border border-blue-500 hover:border-blue-700 hover:bg-blue-100"
-                            } cursor-pointer`}
-                          >
-                            <input
-                              type="radio"
-                              name={`quiz-${quiz.id}-question-${qIndex}`}
-                              value={option}
-                              checked={answers[quizId - 1][qIndex] === option}
-                              onChange={() =>
-                                handleAnswerChange(quizId - 1, qIndex, option)
-                              }
-                              className="mr-2 cursor-pointer"
-                            />
-                            <span>{option}</span>
-                          </label>
-                        ))}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              )}
+    <div className="container mx-auto px-4 py-8">
+      {showResult ? (
+        <div className="0 h-screen flex justify-center items-center">
+          <div className="bg-white p-8 rounded-lg text-center">
+            <h1 className="text-3xl font-bold mb-4">Result</h1>
+            <p className="mb-2">
+              Your score is{" "}
+              <span className="text-blue-500 font-semibold">{score}</span> out
+              of{" "}
+              <span className="text-blue-500 font-semibold">
+                {quiz.questions.length}
+              </span>
+            </p>
+            <p className="text-green-500 text-xl font-semibold animate-pulse mb-5">
+              Congratulations!
+            </p>
+            <Link
+              href="/quiz"
+              className="bg-blue-500 mb-5 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-300"
+            >
+              Làm các bài Quiz khác !
+            </Link>
+          </div>
+        </div>
+      ) : (
+        <div>
+          <h1 className="text-3xl font-bold mb-4"> ❓ {quiz.title}</h1>
+          <p className="text-gray-600 mb-8"> 📋 {quiz.description}</p>
+
+          {quiz.questions.map((question) => (
+            <div
+              key={question.id}
+              className={`border border-solid rounded-lg p-4 mb-6 ${
+                questionStates.find((q) => q.id === question.id)
+                  ?.selectedOptionId
+                  ? "border-blue-500"
+                  : "border-gray-400"
+              }  border-solid border-4`}
+            >
+              <h2 className="text-lg font-semibold mb-2">
+                Question {question.id}
+              </h2>
+              <p className="mb-2">{question.question}</p>
+              <ul>
+                {question.options.map((option, index) => (
+                  <li key={index} className="mb-2">
+                    <label
+                      className={`block mb-2 p-2 rounded-lg border ${
+                        questionStates.find((q) => q.id === question.id)
+                          ?.selectedOptionId === question.id &&
+                        answers[question.id] === option
+                          ? "bg-blue-100 border-blue-500"
+                          : "border-gray-400"
+                      } cursor-pointer `}
+                    >
+                      <input
+                        type="radio"
+                        value={option}
+                        checked={answers[question.id] === option}
+                        onChange={() => handleChange(question.id, option)}
+                        className="mr-2 cursor-pointer"
+                      />
+                      {option}
+                    </label>
+                  </li>
+                ))}
+              </ul>
             </div>
           ))}
           <button
             onClick={handleSubmit}
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
           >
             Submit
           </button>
-        </>
-      )}
-      {showResult && (
-        <div className="flex items-center justify-center h-screen bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500">
-          <div className="bg-white rounded-lg shadow-lg p-8 max-w-md">
-            <h2 className="text-3xl font-bold text-center text-purple-600 mb-4">
-              Congratulations!
-            </h2>
-            <p className="text-lg text-gray-700 mb-8 text-center">
-              Your score for Quiz <span className="font-bold">{quizId}</span> is{" "}
-              <span className="font-bold text-purple-600">{score}</span>.
-            </p>
-            <button className="bg-purple-500 hover:bg-purple-600 text-white font-bold py-2 px-4 rounded-full w-full transition duration-300 ease-in-out transform hover:scale-105">
-              Start a New Quiz
-            </button>
-          </div>
         </div>
       )}
     </div>
