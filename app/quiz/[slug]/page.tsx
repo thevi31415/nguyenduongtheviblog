@@ -82,9 +82,16 @@ export default function QuizPage(props: any) {
                 {quiz.questions.length}
               </span>
             </p>
-            <p className="text-green-500 text-xl font-semibold animate-pulse mb-5">
-              Congratulations!
+            <p
+              className={`text-${
+                score >= quiz.questions.length / 2 ? "green" : "red"
+              }-500 text-xl font-semibold animate-pulse mb-5`}
+            >
+              {score > quiz.questions.length / 2
+                ? "Congratulations!"
+                : "Sorry, you didn't pass this time."}
             </p>
+
             <Link
               href="/quiz"
               className="bg-blue-500 mb-5 mt-5 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-300"
