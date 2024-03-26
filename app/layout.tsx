@@ -98,7 +98,7 @@ export default function RootLayout({
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
                 </p>
               </li>
-              <li className="p-3 mx-2 ">
+              {/* <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
                     <a href="/contact">📞</a>
@@ -108,7 +108,7 @@ export default function RootLayout({
                   </span>
                   <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
                 </p>
-              </li>
+              </li> */}
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
