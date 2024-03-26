@@ -90,6 +90,17 @@ export default function RootLayout({
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
+                    <a href="/documents">🗂</a>
+                    <Link href="/documents" className="gradient-text">
+                      Documents
+                    </Link>
+                  </span>
+                  <span className="absolute -bottom-1 left-0 w-0 h-1 bg-blue-500 transition-all group-hover:w-full"></span>
+                </p>
+              </li>
+              <li className="p-3 mx-2 ">
+                <p className="relative group">
+                  <span>
                     <a href="/about">🧑🏻‍💻</a>
                     <Link href="/about" className="gradient-text">
                       About

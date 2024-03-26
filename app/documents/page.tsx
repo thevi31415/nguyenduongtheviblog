@@ -4,14 +4,16 @@ export const metadata: Metadata = {
   title: "The Vi Blog",
   description: "This is my personal blog, sharing about my everyday life.",
 };
-export default function Contact() {
+export default function Document() {
   return (
-    <div className="container mx-auto py-8">
+    <div className="">
       <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet"
       />
-      <h1 className="text-3xl font-bold mb-4 text-blue-700">Documents</h1>
+      <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
+        📁 Documents
+      </h4>
       <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         <li className="bg-white shadow-md rounded-md p-6 flex flex-col justify-between">
           <div className="flex items-center justify-center mb-4">
