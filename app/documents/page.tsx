@@ -34,7 +34,20 @@ const getDocumentMetadata = (): DocumentMetadata[] => {
     return dateB.getTime() - dateA.getTime();
   });
 };
-
+const getIconColor = (type: any) => {
+  switch (type) {
+    case "DOC":
+      return "text-blue-500";
+    case "PDF":
+      return "text-red-500";
+    case "XLS":
+      return "text-green-500";
+    case "PPT":
+      return "text-orange-500";
+    default:
+      return "text-yellow-500";
+  }
+};
 export default function Document() {
   const documentMetadata = getDocumentMetadata();
   const postPreviews = documentMetadata.map((document, index) => (
@@ -42,9 +55,13 @@ export default function Document() {
       <li className="bg-white shadow-lg rounded-lg overflow-hidden hover:shadow-xl transition duration-300 ease-in-out transform hover:-translate-y-1 hover:scale-105">
         <div className="p-6">
           <div className="flex items-center justify-center mb-4">
-            <i className="fas fa-file-alt text-5xl text-blue-500 mr-4"></i>
+            <i
+              className={`fas fa-file-alt text-5xl ${getIconColor(
+                document.type
+              )} mr-4`}
+            ></i>
             <div>
-              <h2 className="text-lg font-semibold text-blue-500">
+              <h2 className="text-lg font-semibold text-black-500">
                 {document.title}
               </h2>
               <p className="text-gray-600">{document.subtitle}</p>
@@ -68,7 +85,7 @@ export default function Document() {
   ));
 
   return (
-    <div className="">
+    <div className="mb-5">
       <link
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
         rel="stylesheet"
@@ -76,7 +93,7 @@ export default function Document() {
       <h4 className="  text-2xl font-medium text-gray-700 mb-5" id="new">
         📁 Documents
       </h4>
-      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mb-4">
         {postPreviews}
         {/* Add more list items as needed */}
       </ul>
