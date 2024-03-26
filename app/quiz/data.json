@@ -61,6 +61,123 @@
                     "answer": "All of the above"
                 }
             ]
+        },
+        {
+            "id": "jGsTxtasbF",
+            "title": "Bài kiểm tra An Toàn Thông Tin",
+            "description": "Đây là bài kiểm tra An Toàn Thông Tin HCMUTE",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "Điều nào sau đây KHÔNG đúng khi nói về lỗ hổng Zero-day",
+                    "options": [
+                        " Là lỗ hổng nhà sản xuất chưa kịp vá",
+                        " Là lỗ hổng nguy hiểm khi tấn công vào hệ thống chưa có giải pháp bảo vệ",
+                        "Là lỗ hổng hacker chưa công bố rộng rãi",
+                        "Là lỗ hổng phá hoại hệ thống trong vòng một ngày"
+                    ],
+                    "answer": "Là lỗ hổng phá hoại hệ thống trong vòng một ngày"
+                },
+                {
+                    "id": 2,
+                    "question": "Các giải pháp mã hóa KHÔNG đảm bảo được tính chất nào sau đây",
+                    "options": [
+                        "Tính xác thực",
+                        "Tính xác thực",
+                        " Tính sẵn sàng",
+                        "Tính bí mật"
+                    ],
+                    "answer": " Tính sẵn sàng"
+                },
+                {
+                    "id": 3,
+                    "question": "Đảm bảo dữ liệu không bị sửa đổi trong quá trình lưu trữ hay trong quá trình truyền qua mạng bởi những người dùng không hợp pháp gọilà?",
+                    "options": [
+                        "Non-repudiation",
+                        " Availability",
+                        "Confidentiality",
+                        " Integrity"
+                    ],
+                    "answer": " Integrity"
+                },
+                {
+                    "id": 4,
+                    "question": "Mục đích chính của chương trình nâng cao nhận thức bảo mật là?",
+                    "options": [
+                        "Rootkit",
+                        "Code Red",
+                        "Ransomeware",
+                        "Logic boom"
+                    ],
+                    "answer": "Ransomeware"
+                },
+                {
+                    "id": 5,
+                    "question": "Phương pháp nào sau đây là TỐT NHẤT để giảm hiệu quả của các cuộc tấn công lừa đảo trên mạng?",
+                    "options": [
+                        "Phần mềm chống lừa đảo",
+                        "Xác thực 2 yếu tố",
+                        "Đào tạo nâng cao nhận thức người dùng",
+                        "Quét lỗ hổng cho hệ thống định kỳ"
+                    ],
+                    "answer": "Đào tạo nâng cao nhận thức người dùng"
+                },
+                {
+                    "id": 6,
+                    "question": "Rủi ro chính từ việc sử dụng phần mềm lỗi thời (outdated software) là gì\n",
+                    "options": [
+                        "Nó có thể không còn được hỗ trợ bởi các nhà cung cấp",
+                        "Nó có thể không có các tính năng bảo mật hiện đại nhất",
+                        "Nó có thể không có tất cả các tính năng bạn cần",
+                        "Có thể dễ dàng xâm nhập hơn phần mềm mới hơn"
+                    ],
+                    "answer": "Nó có thể không còn được hỗ trợ bởi các nhà cung cấp"
+                },
+                {
+                    "id": 7,
+                    "question": "Nếu bạn chia sẻ quá nhiều thông tin trên phương tiện truyền thông xã hội, bạn có thể gặp rủi ro gì?\n",
+                    "options": [
+                        "Mã độc (malware)",
+                        "Đánh cắp tiền",
+                        "Ransomware",
+                        "Tấn công giả mạo (Phishing)"
+                    ],
+                    "answer": "Tấn công giả mạo (Phishing)"
+                },
+                {
+                    "id": 8,
+                    "question": "Điều nào sau đây đúng khi nói về tấn công làm tràn bộ đệm (buffer Overflow)\n",
+                    "options": [
+                        " Ghi đè các giá trị lên các biến của chương trình nhằm thay đổi hành vi của chương trình theo mục đích của kẻ tấn công",
+                        "Xảy ra do kiểm tra dữ liệu đầu vào không đầy đủ hoặc bị bỏ qua",
+                        "Xóa dữ liệu người dùng",
+                        "Kẻ tấn công gửi các chuỗi dữ liệu lớn làm tràn bộ đệm đã được thiết kế cho chương trình"
+                    ],
+                    "answer": "Kẻ tấn công gửi các chuỗi dữ liệu lớn làm tràn bộ đệm đã được thiết kế cho chương trình"
+                },
+                {
+                    "id": 9,
+                    "question": "Câu nào sau đây KHÔNG phải là một cơ chế điều khiển truy cập?",
+                    "options": [
+                        "Mandatory Access Control (MAC)",
+                        " Attribute Based Access Control (ABAC)",
+                        "Subjective Access Control (SAC)",
+                        "Role Based Access Control (RBAC)"
+                    ],
+                    "answer": "Subjective Access Control (SAC)"
+                },
+                {
+                    "id": 10,
+                    "question": "John muốn thêm luật (rule) vào ACL cho tệp script00.sh để cấp cho student04 quyền đọc và ghi đối với tệp đó. Lệnh nào sau đây được thựchiện?",
+                    "options": [
+                        "getfacl  -m  u:student04:rw-  script00.sh",
+                        "setfacl  -m  u:student04:rw-  script00.sh",
+                        " setfacl  -x  u:student04:rw-  script00.sh",
+                        "getfacl  -x  u:student04:rw-  script00.sh"
+                    ],
+                    "answer": "setfacl  -m  u:student04:rw-  script00.sh"
+                }
+            ]
         }
     ]
 }
