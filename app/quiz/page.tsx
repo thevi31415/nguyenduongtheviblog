@@ -133,7 +133,7 @@ export default function Blog(props: any) {
           </div>
         </div>
         <div className="grow p-2 pb-8">
-          <h3 className="flex gap-x-1.5 font-semibold text-gray-800 dark:text-white">
+          <h3 className="flex gap-x-1.5 font-semibold text-blue-400 dark:text-white">
             <svg
               className="flex-shrink-0 size-4 mt-1"
               xmlns="http://www.w3.org/2000/svg"
