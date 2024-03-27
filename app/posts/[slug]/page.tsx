@@ -12,6 +12,7 @@ import {
   materialLight,
   oneLight,
   oneDark,
+  darcula,
 } from "react-syntax-highlighter/dist/cjs/styles/prism";
 import { PostMetadata } from "@/components/PostMetadata";
 import ReactMarkdown from "react-markdown";
@@ -346,7 +347,7 @@ const PostPage = (props: any) => {
                       // eslint-disable-next-line react/no-children-prop
                       children={String(children).replace(/\n$/, "")}
                       language={match[1]}
-                      style={oneLight as any}
+                      style={materialLight as any}
                       {...props}
                     />
                   ) : (
