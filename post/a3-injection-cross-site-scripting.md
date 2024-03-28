@@ -19,7 +19,7 @@ id: "13"
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711201758/WebGoat/H56_fsql79.png)
 
-##2. Try It! Reflected XSS
+## 2. Try It! Reflected XSS
 
 - Nhập đoạn code sau vào ô **Enter your credit card number** và nhấn Purchase:
 
@@ -29,13 +29,13 @@ id: "13"
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711201758/WebGoat/H57_egugfr.png)
 
-##3. Identify potential for DOM-Based XSS
+## 3. Identify potential for DOM-Based XSS
 
 - Tìm đến file `GoatRouter.js` trong Tab Sources. Nhập `start.mvc#test/` và Submit:
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711201759/WebGoat/H58_ivqmqv.png)
 
-##4. Try It! DOM-Based XSS
+## 4. Try It! DOM-Based XSS
 
 - Đi đến trang: [http://127.0.0.1:8080/WebGoat/start.mvc#test/WhateverYouType](http://127.0.0.1:8080/WebGoat/start.mvc#test/WhateverYouType "http://127.0.0.1:8080/WebGoat/start.mvc#test/WhateverYouType").
 

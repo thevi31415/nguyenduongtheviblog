@@ -18,4 +18,5 @@ id: "4"
 ## 2. Try It! Working with the Network tab
 
 - Vào Tab NetWork, nhấn nút `Go !` trên WebGoat, ta sẽ thấy được netWorkNum là `22.90478666901048`. Copy số đó dán vào và nhấn Check:
+
   ![alt](/images/webgoat/H16.png)

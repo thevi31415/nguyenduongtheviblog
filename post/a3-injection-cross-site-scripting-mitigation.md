@@ -38,7 +38,7 @@ id: "15"
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711414460/WebGoat/H65_ztois7.png)
 
-##2. Stored XSS
+## 2. Stored XSS
 
 - Một cách để ngăn chặn XSS Store là sử dụng OWASP AntiSamy. AntiSamy có thể tạo "clean" string dựa trên tệp chính sách có thể điều chỉnh.
 - Ta cập nhật lại đoạn code mẫu đề bài cho như sau và nhấn submit là xong:

