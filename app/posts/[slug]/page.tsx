@@ -370,7 +370,7 @@ const PostPage = (props: any) => {
       <div className="overflow-hidden">
         {" "}
         <h4 className="  text-xl font-medium text-gray-700 mb-2" id="new">
-          ✨Bài viết liên quan
+          ✨ Bài viết liên quan
         </h4>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-2 mb-4">
           {postPreviews}
