@@ -350,7 +350,7 @@ export default function RootLayout({
           )}
         </Fragment> */}
         <div className="bg-gray-100 h-screen flex items-center justify-center">
-          <div className="max-w-md bg-white border border-gray-300 p-8 rounded-lg shadow-lg text-center">
+          <div className="max-w-md bg-white border border-gray-300 p-8 rounded-lg  text-center">
             <h2 className="text-2xl font-semibold mb-4">
               Trang web đang được chỉnh sửa
             </h2>
