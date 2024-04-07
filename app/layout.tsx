@@ -317,7 +317,7 @@ export default function RootLayout({
     <html>
       <head />
       <body>
-        {/* {header}
+        {header}
         <div className="mx-auto  max-w-4xl px-4">
           <div className="mx-auto  max-w-4xl px-4 mt-40">{children}</div>
         </div>
@@ -348,8 +348,8 @@ export default function RootLayout({
           ) : (
             <Fragment />
           )}
-        </Fragment> */}
-        <div className="bg-gray-100 h-screen flex items-center justify-center">
+        </Fragment>
+        {/* <div className="bg-gray-100 h-screen flex items-center justify-center">
           <div className="max-w-md bg-white border border-gray-300 p-8 rounded-lg  text-center">
             <h2 className="text-2xl font-semibold mb-4">
               Trang web đang được chỉnh sửa
@@ -395,7 +395,7 @@ export default function RootLayout({
               © 2024 Nguyen Duong The Vi. All Rights Reserved.
             </span>
           </div>
-        </div>
+        </div> */}
       </body>
     </html>
   );
