@@ -23,5 +23,3 @@ id: "4"
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1712577128/Life/A7_gpdrxy.jpg)
 
 ![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1712577137/Life/A9_g6teiw.jpg)
-
-![alt](https://res.cloudinary.com/dhs93uix6/image/upload/v1712577140/Life/A10_jfzwvx.jpg)
