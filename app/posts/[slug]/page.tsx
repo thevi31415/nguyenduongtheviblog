@@ -124,6 +124,16 @@ const PostPage = (props: any) => {
   return (
     <div>
       <div className={Styles.progressBar}></div>
+      <div className="mb-2 flex justify-between max-sm-gutters:mb-2 max-sm-gutters:block ">
+        <a
+          className="inline-flex border border-solid rounded-md font-medium gap-2 items-center whitespace-nowrap transition h-9 px-4 text-xs border-button-secondary bg-button-secondary text-button-secondary shadow-xs hocus:bg-button-secondary-hover active:scale-98 max-sm-gutters:mb-4 hover:border-blue-400 hover:text-blue-400"
+          href="/blog"
+        >
+          <span className="flex self-center text-inherit leading-none select-none">
+            All Posts
+          </span>
+        </a>
+      </div>
 
       <div className="my-3 text-left gradient-text ">
         <h1 className="text-4xl text-slate-600 font-bold ">
