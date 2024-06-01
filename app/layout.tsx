@@ -19,21 +19,22 @@ export default function RootLayout({
     <header>
       <link rel="icon" href="./favicon.ico" sizes="any" />
       <nav className="fixed shadow-md top-0 left-0 w-full z-10 bg-white border-b border-gray-200 backdrop-blur-sm bg-white/30">
-        <div className="flex justify-center p-4 border-b bg-white-50">
+        {/* <div className="flex justify-center p-4 border-b bg-white-50">
           <div className="container mx-auto">
             <div className="flex items-center justify-center ">
               <div className="hidden md:block"></div>
-              <div className="text-center">
-                <div className="text-3xl gradient-text font-bold">
+               <div className="text-center">
+                <div
+                  className="gradient-text font-bold"
+                  style={{ fontSize: 20 }}
+                >
                   <Link href="/">The Vi Blog</Link>
                 </div>
-                {/* <div className="text-lg text-slate-500">
-                  Friday, Nov 18,2022
-                </div> */}
-              </div>
+             
+              </div> 
             </div>
           </div>
-        </div>
+        </div> */}
 
         <div>
           <div className="md:hidden">
@@ -55,6 +56,19 @@ export default function RootLayout({
           </div>
           <div className="hidden md:block" id="menu">
             <ul className="justify-center text-lg font-medium md:flex">
+              <li className="p-3 mx-2 ">
+                <p className="relative group">
+                  <span>
+                    <Link
+                      href="/"
+                      className="gradient-text"
+                      style={{ fontWeight: "bold", fontSize: 25 }}
+                    >
+                      TheVi
+                    </Link>
+                  </span>
+                </p>
+              </li>
               <li className="p-3 mx-2 ">
                 <p className="relative group">
                   <span>
@@ -319,7 +333,7 @@ export default function RootLayout({
       <body>
         {header}
         <div className="mx-auto  max-w-4xl px-4">
-          <div className="mx-auto  max-w-4xl px-4 mt-40">{children}</div>
+          <div className="mx-auto  max-w-4xl px-4 mt-20">{children}</div>
         </div>
         {footer}
         <Fragment>
