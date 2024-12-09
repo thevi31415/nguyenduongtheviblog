@@ -62,7 +62,7 @@ export default async function Home() {
           </h1>
           <p className="text-gray-700  mb-4">Ho Chi Minh City, Vietnam</p>
           <p className="text-gray-600  mb-16">
-            Currently, I am a third-year student at Ho Chi Minh City University
+            Currently, I am a fourth-year student at Ho Chi Minh City University
             of Technology and Education.
           </p>
         </div>
